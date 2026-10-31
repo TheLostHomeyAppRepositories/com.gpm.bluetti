@@ -355,8 +355,17 @@ class PowerStationDevice extends Homey.Device {
       });
     }
 
+    if (Object.keys(states).length) this._reportedFnCodes = new Set(Object.keys(states));
     for (const [output, fnCode] of Object.entries(SWITCH_MAP)) {
-      if (states[fnCode] === undefined) continue;
+      if (states[fnCode] === undefined) {
+        // v0.4.4/v0.4.5 added the sleep switch when the cloud accepted the command, even on models
+        // without sleep mode.
+        if (OPTIONAL_SWITCHES[output] && this.hasCapability(`onoff.${output}`) && this._reportedFnCodes) {
+          await this.removeCapability(`onoff.${output}`).catch(this.error);
+          this.log(`This model does not report ${fnCode}: removed onoff.${output}`);
+        }
+        continue;
+      }
       if (OPTIONAL_SWITCHES[output] && !this.hasCapability(`onoff.${output}`)) await this._addOptionalOutput(output);
       await this._setOutputState(output, String(states[fnCode]) === '1', 'cloud');
     }
@@ -520,9 +529,10 @@ class PowerStationDevice extends Homey.Device {
       await this._setOutputOverBle(output, on);
       return;
     }
-    // An optional switch (sleep mode) is added once the cloud reports it; until then, let the
-    // cloud decide whether this model supports it.
-    const addOptional = Boolean(OPTIONAL_SWITCHES[output]) && !this.hasCapability(`onoff.${output}`);
+    // An optional switch (sleep mode) appears once the cloud reports it. Before the first report,
+    // send the command anyway; afterwards a model that does not report it does not support it.
+    // (The cloud's "ok" proves nothing: it accepts commands a model ignores.)
+    if (this._reportedFnCodes) this._requireOutput(output);
     this.log(`Setting ${fnCode} → ${on ? 1 : 0}`);
     try {
       await this.cloud.control(this.sn, fnCode, on ? '1' : '0');
@@ -533,8 +543,7 @@ class PowerStationDevice extends Homey.Device {
       throw new Error(this.homey.__('errors.cloud', { message: err.message }));
     }
 
-    if (addOptional) await this._addOptionalOutput(output);
-    await this._setOutputState(output, on, 'Homey');
+    if (this.hasCapability(`onoff.${output}`)) await this._setOutputState(output, on, 'Homey');
     this.restartPolling(POST_COMMAND_POLL_MS);
   }
 

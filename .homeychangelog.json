@@ -25,5 +25,8 @@
   },
   "0.4.5": {
     "en": "The \"Cloud unavailable – reading over Bluetooth\" warning no longer stays on the device after the cloud is working again."
+  },
+  "0.4.6": {
+    "en": "The Sleep mode button now only appears on models that report sleep mode (such as the Elite 200 V2). On other models a wrongly added button is removed, and the Sleep mode card reports that the model does not support it."
   }
 }
