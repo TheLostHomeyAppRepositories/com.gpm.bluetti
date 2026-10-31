@@ -1,0 +1,14 @@
+{
+  "type": "enum",
+  "title": { "en": "Connection" },
+  "getable": true,
+  "setable": false,
+  "insights": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/connection.svg",
+  "values": [
+    { "id": "cloud", "title": { "en": "Cloud" } },
+    { "id": "bluetooth", "title": { "en": "Bluetooth" } },
+    { "id": "offline", "title": { "en": "Offline" } }
+  ]
+}

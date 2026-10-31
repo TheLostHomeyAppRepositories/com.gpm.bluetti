@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.gpm.bluetti",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -300,7 +300,8 @@
         "onoff.dc",
         "onoff.ac_eco",
         "onoff.dc_eco",
-        "bluetti_work_mode"
+        "bluetti_work_mode",
+        "bluetti_connection"
       ],
       "capabilitiesOptions": {
         "measure_power": {
@@ -555,6 +556,37 @@
       "insights": true,
       "uiComponent": null,
       "icon": "/assets/capabilities/charge.svg"
+    },
+    "bluetti_connection": {
+      "type": "enum",
+      "title": {
+        "en": "Connection"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/connection.svg",
+      "values": [
+        {
+          "id": "cloud",
+          "title": {
+            "en": "Cloud"
+          }
+        },
+        {
+          "id": "bluetooth",
+          "title": {
+            "en": "Bluetooth"
+          }
+        },
+        {
+          "id": "offline",
+          "title": {
+            "en": "Offline"
+          }
+        }
+      ]
     },
     "bluetti_discharge_time": {
       "type": "number",

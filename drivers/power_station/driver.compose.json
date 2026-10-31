@@ -21,7 +21,8 @@
     "onoff.dc",
     "onoff.ac_eco",
     "onoff.dc_eco",
-    "bluetti_work_mode"
+    "bluetti_work_mode",
+    "bluetti_connection"
   ],
   "capabilitiesOptions": {
     "measure_power": {

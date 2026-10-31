@@ -28,5 +28,8 @@
   },
   "0.4.6": {
     "en": "The Sleep mode button now only appears on models that report sleep mode (such as the Elite 200 V2). On other models a wrongly added button is removed, and the Sleep mode card reports that the model does not support it."
+  },
+  "0.4.7": {
+    "en": "New: Connection shows whether Homey reaches the power station through the BLUETTI cloud or over Bluetooth. Clearer Timeline message when the power station loses its Wi-Fi: reconnect it to Wi-Fi in the BLUETTI app."
   }
 }

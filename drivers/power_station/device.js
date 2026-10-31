@@ -84,7 +84,7 @@ class PowerStationDevice extends Homey.Device {
     await this.unsetWarning().catch(this.error);
 
     // Capabilities added after the first release.
-    for (const capability of ['bluetti_soc', 'bluetti_time_to_empty', 'bluetti_time_to_full']) {
+    for (const capability of ['bluetti_soc', 'bluetti_time_to_empty', 'bluetti_time_to_full', 'bluetti_connection']) {
       if (!this.hasCapability(capability)) await this.addCapability(capability).catch(this.error);
     }
     // Pre-fill the capacity for known models; 0 means unknown.
@@ -244,13 +244,13 @@ class PowerStationDevice extends Homey.Device {
           this._notify('timeline.signed_out');
         }
         // Still read over Bluetooth, but tell the user to sign in again (Repair).
-        if (!(await this._bleFallback('errors.auth'))) await this.setUnavailable(this.homey.__('errors.auth')).catch(this.error);
+        if (!(await this._bleFallback('errors.auth'))) await this._setOffline(this.homey.__('errors.auth'));
       } else {
         this._failures += 1;
         this._stats.pollFails += 1;
         this.error(`Poll failed (${this._failures} in a row):`, err.message);
         if (this._failures >= MAX_FAILURES && !(await this._bleFallback())) {
-          await this.setUnavailable(this.homey.__('errors.cloud', { message: err.message })).catch(this.error);
+          await this._setOffline(this.homey.__('errors.cloud', { message: err.message }));
         }
       }
     } finally {
@@ -304,7 +304,7 @@ class PowerStationDevice extends Homey.Device {
     }
     if (!online) {
       if (await this._bleFallback()) return;
-      await this.setUnavailable(this.homey.__('errors.offline')).catch(this.error);
+      await this._setOffline(this.homey.__('errors.offline'));
       return;
     }
     if (this._viaBle) {
@@ -313,6 +313,7 @@ class PowerStationDevice extends Homey.Device {
       await this.unsetWarning().catch(this.error);
     }
     await this.setAvailable().catch(this.error);
+    await this._set('bluetti_connection', 'cloud');
 
     if (product.model && this.getSetting('model') !== product.model) {
       await this.setSettings({ model: String(product.model) }).catch(this.error);
@@ -387,6 +388,12 @@ class PowerStationDevice extends Homey.Device {
     return value;
   }
 
+  // Neither the cloud nor Bluetooth reaches the power station.
+  async _setOffline(message) {
+    await this._set('bluetti_connection', 'offline');
+    await this.setUnavailable(message).catch(this.error);
+  }
+
   async _set(capability, value) {
     if (!this.hasCapability(capability)) return;
     if (this.getCapabilityValue(capability) === value) return;
@@ -428,6 +435,7 @@ class PowerStationDevice extends Homey.Device {
         this.log('Cloud unavailable, using Bluetooth fallback');
       }
       await this.setAvailable().catch(this.error);
+      await this._set('bluetti_connection', 'bluetooth');
       await this.setWarning(this.homey.__(warningKey)).catch(this.error);
       return true;
     } catch (err) {
