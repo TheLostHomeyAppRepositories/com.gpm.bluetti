@@ -7,8 +7,8 @@
     "ble_command": "La estación de energía está sin conexión en la nube de BLUETTI y tampoco se pudo conectar por Bluetooth: __message__",
     "ble_refused": "La estación de energía no ejecutó el comando.",
     "cloud_only": "La nube de BLUETTI no responde, y el __output__ solo se puede cambiar a través de la nube: __message__",
-    "ac_locked": "La salida AC se mantiene encendida (\"Mantener la salida AC encendida\" en los ajustes del dispositivo).",
-    "ac_eco_locked": "AC ECO puede apagar la salida AC, y la salida AC se mantiene encendida (\"Mantener la salida AC encendida\" en los ajustes del dispositivo)."
+    "output_locked": "La salida __output__ se mantiene encendida (\"Mantener la salida __output__ encendida\" en los ajustes del dispositivo).",
+    "eco_locked": "__output__ ECO puede apagar la salida __output__, y la salida __output__ se mantiene encendida (\"Mantener la salida __output__ encendida\" en los ajustes del dispositivo)."
   },
   "outputs": {
     "sleep": "modo reposo"

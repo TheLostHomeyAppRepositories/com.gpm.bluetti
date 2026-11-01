@@ -7,8 +7,8 @@
     "ble_command": "De powerstation is offline in de BLUETTI-cloud en was ook niet via Bluetooth bereikbaar: __message__",
     "ble_refused": "De powerstation heeft de opdracht niet uitgevoerd.",
     "cloud_only": "De BLUETTI-cloud reageert niet, en de __output__ kan alleen via de cloud worden geschakeld: __message__",
-    "ac_locked": "De AC-uitgang blijft aan (\"AC-uitgang altijd aan\" in de apparaatinstellingen).",
-    "ac_eco_locked": "AC ECO kan de AC-uitgang uitschakelen, en de AC-uitgang blijft aan (\"AC-uitgang altijd aan\" in de apparaatinstellingen)."
+    "output_locked": "De __output__-uitgang blijft aan (\"__output__-uitgang altijd aan\" in de apparaatinstellingen).",
+    "eco_locked": "__output__ ECO kan de __output__-uitgang uitschakelen, en de __output__-uitgang blijft aan (\"__output__-uitgang altijd aan\" in de apparaatinstellingen)."
   },
   "outputs": {
     "sleep": "slaapstand"

@@ -83,6 +83,27 @@
     }
   },
   {
+    "id": "dc_keep_on",
+    "type": "checkbox",
+    "value": false,
+    "label": {
+      "en": "Keep DC output on",
+      "nl": "DC-uitgang altijd aan",
+      "de": "DC-Ausgang immer an",
+      "fr": "Garder la sortie DC allumée",
+      "es": "Mantener la salida DC encendida",
+      "it": "Mantieni accesa l'uscita DC"
+    },
+    "hint": {
+      "en": "Homey will not switch the DC output off, from the device or from flows, and will not turn DC ECO on (DC ECO switches DC off at low load). Use this when the power station powers your router or Homey over DC or USB. The BLUETTI app and the power button can still switch DC off.",
+      "nl": "Homey schakelt de DC-uitgang niet uit, niet via het apparaat en niet via flows, en zet DC ECO niet aan (DC ECO schakelt DC uit bij lage belasting). Handig als de powerstation je router of Homey via DC of USB van stroom voorziet. De BLUETTI-app en de aan/uit-knop kunnen DC nog wel uitschakelen.",
+      "de": "Homey schaltet den DC-Ausgang nicht aus, weder am Gerät noch über Flows, und schaltet DC ECO nicht ein (DC ECO schaltet DC bei geringer Last ab). Nützlich, wenn die Powerstation deinen Router oder Homey über DC oder USB versorgt. Die BLUETTI-App und der Ein-/Ausschalter können DC weiterhin ausschalten.",
+      "fr": "Homey n'éteint pas la sortie DC, ni depuis l'appareil ni depuis les flows, et n'active pas le DC ECO (le DC ECO coupe le DC en cas de faible charge). Utile quand la station alimente votre routeur ou votre Homey en DC ou en USB. L'application BLUETTI et le bouton d'alimentation peuvent toujours couper le DC.",
+      "es": "Homey no apaga la salida DC, ni desde el dispositivo ni desde los flows, y no activa DC ECO (DC ECO apaga la DC con poca carga). Útil cuando la estación alimenta tu router o tu Homey por DC o USB. La app de BLUETTI y el botón de encendido aún pueden apagar la DC.",
+      "it": "Homey non spegne l'uscita DC, né dal dispositivo né dai flow, e non attiva DC ECO (DC ECO spegne la DC con carico basso). Utile quando la power station alimenta il router o Homey tramite DC o USB. L'app BLUETTI e il pulsante di accensione possono comunque spegnere la DC."
+    }
+  },
+  {
     "type": "group",
     "label": {
       "en": "Bluetooth fallback",
