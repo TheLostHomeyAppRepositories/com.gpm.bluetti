@@ -124,7 +124,11 @@ class PowerStationDevice extends Homey.Device {
       }
     }
 
-    if (this.getSetting('ble_scan')) this._startBleScanAutoOff();
+    if (this.getSetting('ble_scan')) {
+      // Still on after a restart or update: read the baseline now, so the first change shows as a change.
+      this._startBleScanAutoOff();
+      this.homey.setTimeout(() => this._bleScan('start'), 5000);
+    }
     this.restartPolling();
     // Deferred so getDevices() already includes this device.
     this.homey.setTimeout(() => this.homey.app.updateRealtime(), 1000);
