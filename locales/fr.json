@@ -5,7 +5,8 @@
     "offline": "La station d'énergie est hors ligne dans le cloud BLUETTI. Vérifiez sa connexion Wi-Fi.",
     "not_supported": "Cette station d'énergie ne prend pas en charge le __output__.",
     "ble_command": "La station d'énergie est hors ligne dans le cloud BLUETTI et n'a pas pu être jointe en Bluetooth : __message__",
-    "ble_refused": "La station d'énergie n'a pas exécuté la commande."
+    "ble_refused": "La station d'énergie n'a pas exécuté la commande.",
+    "cloud_only": "Le cloud BLUETTI ne répond pas, et le __output__ ne peut être commandé que via le cloud : __message__"
   },
   "outputs": {
     "sleep": "mode veille"

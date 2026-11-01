@@ -5,7 +5,8 @@
     "offline": "La estación de energía está sin conexión en la nube de BLUETTI. Comprueba su conexión wifi.",
     "not_supported": "Esta estación de energía no admite el __output__.",
     "ble_command": "La estación de energía está sin conexión en la nube de BLUETTI y tampoco se pudo conectar por Bluetooth: __message__",
-    "ble_refused": "La estación de energía no ejecutó el comando."
+    "ble_refused": "La estación de energía no ejecutó el comando.",
+    "cloud_only": "La nube de BLUETTI no responde, y el __output__ solo se puede cambiar a través de la nube: __message__"
   },
   "outputs": {
     "sleep": "modo reposo"

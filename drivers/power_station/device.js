@@ -472,13 +472,23 @@ class PowerStationDevice extends Homey.Device {
       this._bleScanValues = values;
       const at = (i) => BLE_SCAN_START + i;
       if (!previous) {
+        this._bleScanFirst = values;
+        this._bleScanCounts = new Map();
         const set = values.map((v, i) => (v ? `${at(i)}=${v}` : null)).filter(Boolean);
         const refused = values.filter((v) => v === null).length;
         this.log(`BLE scan (${reason}) ${BLE_SCAN_START}-${end}: ${set.join(' ') || 'all 0'}; ${refused} refused`);
         return;
       }
       const changes = values.map((v, i) => (v !== previous[i] ? `${at(i)}: ${previous[i]}→${v}` : null)).filter(Boolean);
-      this.log(`BLE scan (${reason}): ${changes.length ? changes.join(', ') : 'no changes'}`);
+      values.forEach((v, i) => {
+        if (v !== previous[i]) this._bleScanCounts.set(i, (this._bleScanCounts.get(i) || 0) + 1);
+      });
+      // Every scan repeats the history since the first one, so a diagnostic report that only
+      // holds the last few minutes of log still shows all changes.
+      const history = [...this._bleScanCounts].sort(([a], [b]) => a - b)
+        .map(([i, n]) => `${at(i)} ${this._bleScanFirst[i]}→${values[i]}${n > 1 ? ` (${n}×)` : ''}`);
+      this.log(`BLE scan (${reason}): ${changes.length ? changes.join(', ') : 'no changes'}`
+        + `; since start: ${history.join(', ') || 'no changes'}`);
     } catch (err) {
       this.error(`BLE scan (${reason}) failed:`, err.message);
     }
@@ -597,7 +607,10 @@ class PowerStationDevice extends Homey.Device {
     const fnCode = SWITCH_MAP[output];
     if (!fnCode) throw new Error(`Unknown output ${output}`);
     // The cloud accepts commands for an offline unit and drops them: go over Bluetooth instead.
-    if (this._online === false || this._viaBle) {
+    // A switch Bluetooth cannot set (sleep mode) still goes to the cloud when only the cloud's
+    // data requests fail: the unit itself is online and the command endpoint may still answer.
+    const bleOnly = this._online === false || this._viaBle;
+    if (bleOnly && (this._online === false || BluettiBleReader.hasOutput(output))) {
       this._requireOutput(output);
       await this._setOutputOverBle(output, on);
       return;
@@ -613,6 +626,11 @@ class PowerStationDevice extends Homey.Device {
       this._noteError(err);
       this.error(`Command ${fnCode} failed:`, err.message);
       if (err instanceof BluettiAuthError) throw err;
+      if (bleOnly) {
+        throw new Error(this.homey.__('errors.cloud_only', {
+          output: this.homey.__(`outputs.${output}`), message: err.message,
+        }));
+      }
       throw new Error(this.homey.__('errors.cloud', { message: err.message }));
     }
 

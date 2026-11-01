@@ -5,7 +5,8 @@
     "offline": "De powerstation is offline in de BLUETTI-cloud. Controleer de wifiverbinding.",
     "not_supported": "Deze powerstation ondersteunt geen __output__.",
     "ble_command": "De powerstation is offline in de BLUETTI-cloud en was ook niet via Bluetooth bereikbaar: __message__",
-    "ble_refused": "De powerstation heeft de opdracht niet uitgevoerd."
+    "ble_refused": "De powerstation heeft de opdracht niet uitgevoerd.",
+    "cloud_only": "De BLUETTI-cloud reageert niet, en de __output__ kan alleen via de cloud worden geschakeld: __message__"
   },
   "outputs": {
     "sleep": "slaapstand"
