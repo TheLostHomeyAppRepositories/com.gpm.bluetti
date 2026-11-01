@@ -7,6 +7,9 @@
     "ble_command": "The power station is offline in the BLUETTI cloud and could not be reached over Bluetooth: __message__",
     "ble_refused": "The power station did not apply the command."
   },
+  "outputs": {
+    "sleep": "sleep mode"
+  },
   "work_mode": {
     "pv_priority_ups": "PV Priority UPS",
     "standard_ups": "Standard UPS",
@@ -14,7 +17,6 @@
     "custom_ups": "Custom UPS"
   },
   "ble": {
-    "warning": "Cloud unavailable – connected over Bluetooth (working mode not updated)",
     "not_found": "Power station not found over Bluetooth. Is Homey within range?",
     "status_ok": "OK at __time__ – battery __soc__%",
     "status_error": "Failed: __message__"

@@ -1,18 +1,82 @@
 {
-  "title": { "en": "Output is !{{on|off}}" },
-  "titleFormatted": { "en": "[[output]] is !{{on|off}}" },
+  "title": {
+    "en": "Output is !{{on|off}}",
+    "nl": "Uitgang staat !{{aan|uit}}",
+    "de": "Ausgang ist !{{ein|aus}}",
+    "fr": "La sortie est !{{allumée|éteinte}}",
+    "es": "La salida está !{{encendida|apagada}}",
+    "it": "L'uscita è !{{accesa|spenta}}"
+  },
+  "titleFormatted": {
+    "en": "[[output]] is !{{on|off}}",
+    "nl": "[[output]] staat !{{aan|uit}}",
+    "de": "[[output]] ist !{{ein|aus}}",
+    "fr": "[[output]] est !{{en marche|à l'arrêt}}",
+    "es": "Estado de [[output]]: !{{encendido|apagado}}",
+    "it": "Stato di [[output]]: !{{acceso|spento}}"
+  },
   "args": [
-    { "type": "device", "name": "device", "filter": "driver_id=power_station" },
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station"
+    },
     {
       "type": "dropdown",
       "name": "output",
-      "title": { "en": "Output" },
+      "title": {
+        "en": "Output",
+        "nl": "Uitgang",
+        "de": "Ausgang",
+        "fr": "Sortie",
+        "es": "Salida",
+        "it": "Uscita"
+      },
       "values": [
-        { "id": "ac", "title": { "en": "AC output" } },
-        { "id": "dc", "title": { "en": "DC output" } },
-        { "id": "ac_eco", "title": { "en": "AC ECO" } },
-        { "id": "dc_eco", "title": { "en": "DC ECO" } },
-        { "id": "sleep", "title": { "en": "Sleep mode (some models)" } }
+        {
+          "id": "ac",
+          "title": {
+            "en": "AC output",
+            "nl": "AC-uitgang",
+            "de": "AC-Ausgang",
+            "fr": "Sortie AC",
+            "es": "Salida AC",
+            "it": "Uscita AC"
+          }
+        },
+        {
+          "id": "dc",
+          "title": {
+            "en": "DC output",
+            "nl": "DC-uitgang",
+            "de": "DC-Ausgang",
+            "fr": "Sortie DC",
+            "es": "Salida DC",
+            "it": "Uscita DC"
+          }
+        },
+        {
+          "id": "ac_eco",
+          "title": {
+            "en": "AC ECO",
+            "nl": "AC ECO",
+            "de": "AC ECO",
+            "fr": "AC ECO",
+            "es": "AC ECO",
+            "it": "AC ECO"
+          }
+        },
+        {
+          "id": "dc_eco",
+          "title": {
+            "en": "DC ECO",
+            "nl": "DC ECO",
+            "de": "DC ECO",
+            "fr": "DC ECO",
+            "es": "DC ECO",
+            "it": "DC ECO"
+          }
+        }
       ]
     }
   ]

@@ -1,0 +1,80 @@
+{
+  "title": {
+    "en": "Connection changed",
+    "nl": "Verbinding is gewijzigd",
+    "de": "Verbindung hat sich geändert",
+    "fr": "La connexion a changé",
+    "es": "La conexión ha cambiado",
+    "it": "La connessione è cambiata"
+  },
+  "titleFormatted": {
+    "en": "Connection changed to [[connection]]",
+    "nl": "Verbinding is gewijzigd naar [[connection]]",
+    "de": "Verbindung hat sich zu [[connection]] geändert",
+    "fr": "La connexion est passée à [[connection]]",
+    "es": "La conexión ha cambiado a [[connection]]",
+    "it": "La connessione è passata a [[connection]]"
+  },
+  "hint": {
+    "en": "Cloud: normal. Bluetooth: the cloud is unavailable and Homey reaches the power station over Bluetooth. Offline: Homey cannot reach the power station.",
+    "nl": "Cloud: normaal. Bluetooth: de cloud is niet beschikbaar en Homey bereikt de powerstation via Bluetooth. Offline: Homey kan de powerstation niet bereiken.",
+    "de": "Cloud: normal. Bluetooth: die Cloud ist nicht verfügbar und Homey erreicht die Powerstation per Bluetooth. Offline: Homey erreicht die Powerstation nicht.",
+    "fr": "Cloud : normal. Bluetooth : le cloud est indisponible et Homey joint la station via Bluetooth. Hors ligne : Homey ne peut pas joindre la station.",
+    "es": "Nube: normal. Bluetooth: la nube no está disponible y Homey llega a la estación por Bluetooth. Sin conexión: Homey no puede llegar a la estación.",
+    "it": "Cloud: normale. Bluetooth: il cloud non è disponibile e Homey raggiunge la power station via Bluetooth. Offline: Homey non riesce a raggiungere la power station."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station"
+    },
+    {
+      "type": "dropdown",
+      "name": "connection",
+      "title": {
+        "en": "Connection",
+        "nl": "Verbinding",
+        "de": "Verbindung",
+        "fr": "Connexion",
+        "es": "Conexión",
+        "it": "Connessione"
+      },
+      "values": [
+        {
+          "id": "cloud",
+          "title": {
+            "en": "Cloud",
+            "nl": "Cloud",
+            "de": "Cloud",
+            "fr": "Cloud",
+            "es": "Nube",
+            "it": "Cloud"
+          }
+        },
+        {
+          "id": "bluetooth",
+          "title": {
+            "en": "Bluetooth",
+            "nl": "Bluetooth",
+            "de": "Bluetooth",
+            "fr": "Bluetooth",
+            "es": "Bluetooth",
+            "it": "Bluetooth"
+          }
+        },
+        {
+          "id": "offline",
+          "title": {
+            "en": "Offline",
+            "nl": "Offline",
+            "de": "Offline",
+            "fr": "Hors ligne",
+            "es": "Sin conexión",
+            "it": "Offline"
+          }
+        }
+      ]
+    }
+  ]
+}

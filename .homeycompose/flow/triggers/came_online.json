@@ -1,6 +1,17 @@
 {
-  "title": { "en": "Power station came back online" },
+  "title": {
+    "en": "Power station came back online",
+    "nl": "Powerstation is weer online",
+    "de": "Powerstation ist wieder online",
+    "fr": "La station d'énergie est de nouveau en ligne",
+    "es": "La estación de energía vuelve a estar en línea",
+    "it": "La power station è di nuovo online"
+  },
   "args": [
-    { "type": "device", "name": "device", "filter": "driver_id=power_station" }
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station"
+    }
   ]
 }

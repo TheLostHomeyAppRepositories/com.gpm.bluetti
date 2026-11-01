@@ -3,16 +3,31 @@
     "id": "poll_interval",
     "type": "number",
     "label": {
-      "en": "Update interval without real-time link"
+      "en": "Update interval without real-time link",
+      "nl": "Update-interval zonder realtimeverbinding",
+      "de": "Aktualisierungsintervall ohne Echtzeitverbindung",
+      "fr": "Intervalle de mise à jour sans liaison en temps réel",
+      "es": "Intervalo de actualización sin conexión en tiempo real",
+      "it": "Intervallo di aggiornamento senza collegamento in tempo reale"
     },
     "hint": {
-      "en": "Changes are pushed instantly by the BLUETTI cloud. While that real-time link is connected, Homey only reads every 5 minutes as a safety net. This interval is used when the link is down or the power station is offline."
+      "en": "Changes are pushed instantly by the BLUETTI cloud. While that real-time link is connected, Homey only reads every 5 minutes as a safety net. This interval is used when the link is down or the power station is offline.",
+      "nl": "Wijzigingen worden direct door de BLUETTI-cloud doorgegeven. Zolang die realtimeverbinding actief is, leest Homey voor de zekerheid alleen elke 5 minuten uit. Dit interval wordt gebruikt als de verbinding wegvalt of de powerstation offline is.",
+      "de": "Änderungen werden von der BLUETTI-Cloud sofort übertragen. Solange diese Echtzeitverbindung besteht, liest Homey nur zur Sicherheit alle 5 Minuten. Dieses Intervall gilt, wenn die Verbindung unterbrochen oder die Powerstation offline ist.",
+      "fr": "Le cloud BLUETTI transmet les changements instantanément. Tant que cette liaison en temps réel est active, Homey ne lit les données que toutes les 5 minutes, par sécurité. Cet intervalle s'applique quand la liaison est coupée ou que la station d'énergie est hors ligne.",
+      "es": "La nube de BLUETTI envía los cambios al instante. Mientras esa conexión en tiempo real está activa, Homey solo lee cada 5 minutos como respaldo. Este intervalo se usa cuando la conexión se cae o la estación de energía está sin conexión.",
+      "it": "Il cloud BLUETTI invia subito ogni modifica. Finché il collegamento in tempo reale è attivo, Homey legge solo ogni 5 minuti come controllo di sicurezza. Questo intervallo si usa quando il collegamento si interrompe o la power station è offline."
     },
     "value": 30,
     "min": 15,
     "max": 600,
     "units": {
-      "en": "seconds"
+      "en": "seconds",
+      "nl": "seconden",
+      "de": "Sekunden",
+      "fr": "secondes",
+      "es": "segundos",
+      "it": "secondi"
     }
   },
   {
@@ -22,19 +37,39 @@
     "min": 0,
     "max": 100000,
     "label": {
-      "en": "Battery capacity"
+      "en": "Battery capacity",
+      "nl": "Batterijcapaciteit",
+      "de": "Akkukapazität",
+      "fr": "Capacité de la batterie",
+      "es": "Capacidad de la batería",
+      "it": "Capacità della batteria"
     },
     "units": {
-      "en": "Wh"
+      "en": "Wh",
+      "nl": "Wh",
+      "de": "Wh",
+      "fr": "Wh",
+      "es": "Wh",
+      "it": "Wh"
     },
     "hint": {
-      "en": "Used for the Backup time estimate. Filled in automatically for the Elite 30 V2 (288 Wh). For other models, enter the capacity from the label or manual, including any expansion batteries. 0 hides Backup time."
+      "en": "Used for the Backup time estimate. Filled in automatically for the Elite 30 V2 (288 Wh). For other models, enter the capacity from the label or manual, including any expansion batteries. 0 hides Backup time.",
+      "nl": "Wordt gebruikt om de back-uptijd te schatten. Voor de Elite 30 V2 automatisch ingevuld (288 Wh). Vul voor andere modellen de capaciteit in van het typeplaatje of de handleiding, inclusief eventuele uitbreidingsaccu’s. Bij 0 wordt de back-uptijd verborgen.",
+      "de": "Wird für die Schätzung der Überbrückungszeit verwendet. Für die Elite 30 V2 automatisch ausgefüllt (288 Wh). Bei anderen Modellen die Kapazität vom Typenschild oder aus der Anleitung eintragen, einschließlich Erweiterungsakkus. Bei 0 wird die Überbrückungszeit ausgeblendet.",
+      "fr": "Sert à estimer l'autonomie de secours. Rempli automatiquement pour l'Elite 30 V2 (288 Wh). Pour les autres modèles, indiquez la capacité figurant sur l'étiquette ou dans le manuel, batteries d'extension comprises. 0 masque l'autonomie de secours.",
+      "es": "Se usa para estimar el tiempo de respaldo. Se rellena automáticamente para la Elite 30 V2 (288 Wh). Para otros modelos, introduce la capacidad que indica la etiqueta o el manual, incluidas las baterías de expansión. Con 0 se oculta el tiempo de respaldo.",
+      "it": "Serve a stimare l'autonomia di backup. Compilato automaticamente per la Elite 30 V2 (288 Wh). Per gli altri modelli inserisci la capacità indicata sull'etichetta o nel manuale, incluse le eventuali batterie di espansione. Con 0 l'autonomia di backup viene nascosta."
     }
   },
   {
     "type": "group",
     "label": {
-      "en": "Bluetooth fallback"
+      "en": "Bluetooth fallback",
+      "nl": "Bluetooth als reserve",
+      "de": "Bluetooth-Fallback",
+      "fr": "Secours Bluetooth",
+      "es": "Respaldo por Bluetooth",
+      "it": "Bluetooth di riserva"
     },
     "children": [
       {
@@ -42,17 +77,32 @@
         "type": "checkbox",
         "value": false,
         "label": {
-          "en": "Use Bluetooth when the cloud is unavailable"
+          "en": "Use Bluetooth when the cloud is unavailable",
+          "nl": "Bluetooth gebruiken als de cloud niet beschikbaar is",
+          "de": "Bluetooth verwenden, wenn die Cloud nicht erreichbar ist",
+          "fr": "Utiliser le Bluetooth quand le cloud n'est pas disponible",
+          "es": "Usar Bluetooth cuando la nube no esté disponible",
+          "it": "Usa il Bluetooth quando il cloud non è disponibile"
         },
         "hint": {
-          "en": "When Wi-Fi or the BLUETTI cloud is down, Homey reads battery level, power, time remaining and the AC/DC/ECO outputs directly from the power station over Bluetooth, and switches those outputs over Bluetooth too. Homey must be within Bluetooth range, and the BLUETTI app must not be connected to the power station over Bluetooth at the same time. Turning this on runs a test read right away. Tested with Elite 30 V2."
+          "en": "When Wi-Fi or the BLUETTI cloud is down, Homey reads battery level, power, time remaining and the AC/DC/ECO outputs directly from the power station over Bluetooth, and switches those outputs over Bluetooth too. Homey must be within Bluetooth range, and the BLUETTI app must not be connected to the power station over Bluetooth at the same time. Turning this on runs a test read right away. Tested with Elite 30 V2.",
+          "nl": "Als wifi of de BLUETTI-cloud uitvalt, leest Homey het batterijniveau, het vermogen, de resterende tijd en de AC/DC/ECO-uitgangen via Bluetooth rechtstreeks uit de powerstation, en schakelt die uitgangen ook via Bluetooth. Homey moet binnen Bluetooth-bereik zijn, en de BLUETTI-app mag niet tegelijk via Bluetooth met de powerstation verbonden zijn. Bij het inschakelen volgt direct een testuitlezing. Getest met de Elite 30 V2.",
+          "de": "Fällt das WLAN oder die BLUETTI-Cloud aus, liest Homey Akkustand, Leistung, Restzeit und die AC/DC/ECO-Ausgänge per Bluetooth direkt von der Powerstation und schaltet diese Ausgänge ebenfalls per Bluetooth. Homey muss in Bluetooth-Reichweite sein, und die BLUETTI-App darf nicht gleichzeitig per Bluetooth mit der Powerstation verbunden sein. Beim Einschalten erfolgt sofort ein Testabruf. Getestet mit der Elite 30 V2.",
+          "fr": "Quand le Wi-Fi ou le cloud BLUETTI est indisponible, Homey lit le niveau de batterie, la puissance, le temps restant et les sorties AC/DC/ECO directement sur la station d'énergie via Bluetooth, et commande aussi ces sorties via Bluetooth. Homey doit être à portée Bluetooth, et l'application BLUETTI ne doit pas être connectée en Bluetooth à la station au même moment. L'activation lance immédiatement une lecture de test. Testé avec l'Elite 30 V2.",
+          "es": "Cuando el wifi o la nube de BLUETTI no funcionan, Homey lee el nivel de batería, la potencia, el tiempo restante y las salidas AC/DC/ECO directamente de la estación de energía por Bluetooth, y también conmuta esas salidas por Bluetooth. Homey debe estar al alcance del Bluetooth y la app de BLUETTI no debe estar conectada por Bluetooth a la estación al mismo tiempo. Al activarlo se hace una lectura de prueba enseguida. Probado con la Elite 30 V2.",
+          "it": "Quando il Wi-Fi o il cloud BLUETTI non sono disponibili, Homey legge livello della batteria, potenza, tempo residuo e uscite AC/DC/ECO direttamente dalla power station via Bluetooth, e comanda anche queste uscite via Bluetooth. Homey deve essere nel raggio del Bluetooth e l'app BLUETTI non deve essere collegata via Bluetooth alla power station nello stesso momento. All'attivazione viene eseguita subito una lettura di prova. Testato con la Elite 30 V2."
         }
       },
       {
         "id": "ble_status",
         "type": "label",
         "label": {
-          "en": "Last Bluetooth read"
+          "en": "Last Bluetooth read",
+          "nl": "Laatste Bluetooth-uitlezing",
+          "de": "Letzter Bluetooth-Abruf",
+          "fr": "Dernière lecture Bluetooth",
+          "es": "Última lectura por Bluetooth",
+          "it": "Ultima lettura Bluetooth"
         },
         "value": "–"
       }
@@ -62,7 +112,12 @@
     "id": "sn",
     "type": "label",
     "label": {
-      "en": "Serial number"
+      "en": "Serial number",
+      "nl": "Serienummer",
+      "de": "Seriennummer",
+      "fr": "Numéro de série",
+      "es": "Número de serie",
+      "it": "Numero di serie"
     },
     "value": ""
   },
@@ -70,14 +125,24 @@
     "id": "model",
     "type": "label",
     "label": {
-      "en": "Model"
+      "en": "Model",
+      "nl": "Model",
+      "de": "Modell",
+      "fr": "Modèle",
+      "es": "Modelo",
+      "it": "Modello"
     },
     "value": ""
   },
   {
     "type": "group",
     "label": {
-      "en": "Notifications"
+      "en": "Notifications",
+      "nl": "Meldingen",
+      "de": "Benachrichtigungen",
+      "fr": "Notifications",
+      "es": "Notificaciones",
+      "it": "Notifiche"
     },
     "children": [
       {
@@ -85,10 +150,20 @@
         "type": "checkbox",
         "value": true,
         "label": {
-          "en": "Timeline notifications"
+          "en": "Timeline notifications",
+          "nl": "Tijdlijnmeldingen",
+          "de": "Benachrichtigungen in der Zeitleiste",
+          "fr": "Notifications dans la chronologie",
+          "es": "Notificaciones en la cronología",
+          "it": "Notifiche nella cronologia"
         },
         "hint": {
-          "en": "Post a message to the Homey timeline when the power station goes offline, comes back online, or the BLUETTI login needs to be renewed."
+          "en": "Post a message to the Homey timeline when the power station goes offline, comes back online, or the BLUETTI login needs to be renewed.",
+          "nl": "Plaats een bericht in de Homey-tijdlijn als de powerstation offline gaat, weer online komt of de BLUETTI-login vernieuwd moet worden.",
+          "de": "Eine Nachricht in der Homey-Zeitleiste anzeigen, wenn die Powerstation offline geht, wieder online ist oder die BLUETTI-Anmeldung erneuert werden muss.",
+          "fr": "Publier un message dans la chronologie Homey quand la station d'énergie passe hors ligne, revient en ligne ou quand la connexion BLUETTI doit être renouvelée.",
+          "es": "Publicar un mensaje en la cronología de Homey cuando la estación de energía se desconecta, vuelve a estar en línea o hay que renovar el inicio de sesión de BLUETTI.",
+          "it": "Pubblica un messaggio nella cronologia di Homey quando la power station va offline, torna online o quando l'accesso BLUETTI deve essere rinnovato."
         }
       }
     ]
@@ -96,7 +171,12 @@
   {
     "type": "group",
     "label": {
-      "en": "Diagnostics"
+      "en": "Diagnostics",
+      "nl": "Diagnose",
+      "de": "Diagnose",
+      "fr": "Diagnostic",
+      "es": "Diagnóstico",
+      "it": "Diagnostica"
     },
     "children": [
       {
@@ -104,10 +184,41 @@
         "type": "checkbox",
         "value": false,
         "label": {
-          "en": "Detailed logging"
+          "en": "Detailed logging",
+          "nl": "Uitgebreide logging",
+          "de": "Ausführliche Protokollierung",
+          "fr": "Journalisation détaillée",
+          "es": "Registro detallado",
+          "it": "Log dettagliato"
         },
         "hint": {
-          "en": "Writes every cloud reading and real-time notification to the app log. Turn this on, wait a few minutes, then send a diagnostics report from the app page. No passwords or tokens are logged."
+          "en": "Writes every cloud reading and real-time notification to the app log. Turn this on, wait a few minutes, then send a diagnostics report from the app page. No passwords or tokens are logged.",
+          "nl": "Schrijft elke cloud-uitlezing en realtimemelding naar het app-logboek. Zet dit aan, wacht een paar minuten en stuur dan een diagnoserapport vanaf de app-pagina. Wachtwoorden en tokens worden niet gelogd.",
+          "de": "Schreibt jeden Cloud-Abruf und jede Echtzeitmeldung ins App-Protokoll. Einschalten, ein paar Minuten warten und dann auf der App-Seite einen Diagnosebericht senden. Passwörter und Tokens werden nicht protokolliert.",
+          "fr": "Enregistre chaque lecture du cloud et chaque notification en temps réel dans le journal de l'app. Activez cette option, attendez quelques minutes, puis envoyez un rapport de diagnostic depuis la page de l'app. Aucun mot de passe ni jeton n'est enregistré.",
+          "es": "Escribe cada lectura de la nube y cada notificación en tiempo real en el registro de la app. Actívalo, espera unos minutos y envía un informe de diagnóstico desde la página de la app. No se registran contraseñas ni tokens.",
+          "it": "Scrive nel log dell'app ogni lettura dal cloud e ogni notifica in tempo reale. Attivalo, attendi qualche minuto e poi invia un report di diagnostica dalla pagina dell'app. Password e token non vengono registrati."
+        }
+      },
+      {
+        "id": "ble_scan",
+        "type": "checkbox",
+        "value": false,
+        "label": {
+          "en": "Bluetooth register scan",
+          "nl": "Bluetooth-registerscan",
+          "de": "Bluetooth-Registerscan",
+          "fr": "Analyse des registres Bluetooth",
+          "es": "Escaneo de registros por Bluetooth",
+          "it": "Scansione registri Bluetooth"
+        },
+        "hint": {
+          "en": "Only when the developer asks for it. Reads the power station's settings over Bluetooth now, and again 10 seconds after each output or sleep mode change, and writes what changed to the app log. Homey must be within Bluetooth range and the BLUETTI app must not be connected over Bluetooth. Nothing is written to the power station. Turn it off when you are done.",
+          "nl": "Alleen als de ontwikkelaar erom vraagt. Leest de instellingen van de powerstation nu via Bluetooth uit, en opnieuw 10 seconden na elke wijziging van een uitgang of de slaapstand, en schrijft de verschillen naar het app-logboek. Homey moet binnen Bluetooth-bereik zijn en de BLUETTI-app mag niet via Bluetooth verbonden zijn. Er wordt niets naar de powerstation geschreven. Zet het uit als je klaar bent.",
+          "de": "Nur auf Anfrage des Entwicklers. Liest die Einstellungen der Powerstation jetzt per Bluetooth und erneut 10 Sekunden nach jeder Änderung eines Ausgangs oder des Schlafmodus, und schreibt die Unterschiede ins App-Protokoll. Homey muss in Bluetooth-Reichweite sein und die BLUETTI-App darf nicht per Bluetooth verbunden sein. Es wird nichts auf die Powerstation geschrieben. Danach wieder ausschalten.",
+          "fr": "Uniquement à la demande du développeur. Lit maintenant les réglages de la station via Bluetooth, puis 10 secondes après chaque changement d'une sortie ou du mode veille, et écrit les différences dans le journal de l'app. Homey doit être à portée Bluetooth et l'application BLUETTI ne doit pas être connectée en Bluetooth. Rien n'est écrit sur la station. Désactivez l'option une fois terminé.",
+          "es": "Solo cuando lo pida el desarrollador. Lee ahora los ajustes de la estación por Bluetooth, y de nuevo 10 segundos después de cada cambio de una salida o del modo reposo, y escribe las diferencias en el registro de la app. Homey debe estar al alcance del Bluetooth y la app de BLUETTI no debe estar conectada por Bluetooth. No se escribe nada en la estación. Desactívalo cuando termines.",
+          "it": "Solo quando lo chiede lo sviluppatore. Legge subito le impostazioni della power station via Bluetooth, e di nuovo 10 secondi dopo ogni modifica di un'uscita o della modalità sospensione, e scrive le differenze nel log dell'app. Homey deve essere nel raggio del Bluetooth e l'app BLUETTI non deve essere collegata via Bluetooth. Non viene scritto nulla sulla power station. Disattivalo quando hai finito."
         }
       }
     ]

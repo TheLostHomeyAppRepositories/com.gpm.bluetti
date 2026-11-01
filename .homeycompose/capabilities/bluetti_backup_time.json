@@ -1,6 +1,13 @@
 {
   "type": "string",
-  "title": { "en": "Backup time" },
+  "title": {
+    "en": "Backup time",
+    "nl": "Back-uptijd",
+    "de": "Überbrückungszeit",
+    "fr": "Autonomie de secours",
+    "es": "Tiempo de respaldo",
+    "it": "Autonomia di backup"
+  },
   "getable": true,
   "setable": false,
   "insights": false,

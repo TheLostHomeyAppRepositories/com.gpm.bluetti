@@ -1,0 +1,31 @@
+{
+  "errors": {
+    "auth": "Von BLUETTI abgemeldet. Öffne die Geräteeinstellungen und wähle Reparieren, um dich erneut anzumelden.",
+    "cloud": "BLUETTI-Cloud nicht erreichbar: __message__",
+    "offline": "Die Powerstation ist in der BLUETTI-Cloud offline. Prüfe ihre WLAN-Verbindung.",
+    "not_supported": "Diese Powerstation unterstützt keinen __output__.",
+    "ble_command": "Die Powerstation ist in der BLUETTI-Cloud offline und war auch per Bluetooth nicht erreichbar: __message__",
+    "ble_refused": "Die Powerstation hat den Befehl nicht ausgeführt."
+  },
+  "outputs": {
+    "sleep": "Schlafmodus"
+  },
+  "work_mode": {
+    "pv_priority_ups": "PV Priority UPS",
+    "standard_ups": "Standard UPS",
+    "time_control_ups": "Time Control UPS",
+    "custom_ups": "Custom UPS"
+  },
+  "ble": {
+    "not_found": "Powerstation per Bluetooth nicht gefunden. Ist Homey in Reichweite?",
+    "status_ok": "OK um __time__ – Akku __soc__%",
+    "status_error": "Fehlgeschlagen: __message__"
+  },
+  "full": "Voll",
+  "timeline": {
+    "offline": "__name__ hat die Verbindung zur BLUETTI-Cloud verloren (kein WLAN oder Internet an der Powerstation). Verbinde sie in der Nähe der Powerstation in der BLUETTI-App wieder mit dem WLAN (das kann einige Minuten dauern) und schließe danach die App. Hilft das nicht, schalte die Powerstation aus und wieder ein (dabei schaltet sich auch der AC-Ausgang aus).",
+    "offline_ble": "__name__ hat die Verbindung zur BLUETTI-Cloud verloren (kein WLAN oder Internet an der Powerstation). Solange sie in Reichweite ist, liest und schaltet Homey sie weiter per Bluetooth. Verbinde sie in der Nähe der Powerstation in der BLUETTI-App wieder mit dem WLAN (das kann einige Minuten dauern) und schließe danach die App. Hilft das nicht, schalte die Powerstation aus und wieder ein (dabei schaltet sich auch der AC-Ausgang aus).",
+    "online": "__name__ ist wieder online.",
+    "signed_out": "BLUETTI: abgemeldet. Öffne __name__ und wähle Reparieren, um dich erneut anzumelden."
+  }
+}

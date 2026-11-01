@@ -1,10 +1,20 @@
 {
   "type": "number",
   "title": {
-    "en": "Time to full (minutes)"
+    "en": "Time to full (minutes)",
+    "nl": "Tijd tot vol (minuten)",
+    "de": "Zeit bis voll (Minuten)",
+    "fr": "Temps avant charge complète (minutes)",
+    "es": "Tiempo hasta carga completa (minutos)",
+    "it": "Tempo alla carica completa (minuti)"
   },
   "units": {
-    "en": "min"
+    "en": "min",
+    "nl": "min",
+    "de": "min",
+    "fr": "min",
+    "es": "min",
+    "it": "min"
   },
   "decimals": 0,
   "getable": true,

@@ -1,0 +1,61 @@
+{
+  "title": {
+    "en": "Turn sleep mode on or off",
+    "nl": "Zet slaapstand aan of uit",
+    "de": "Schlafmodus ein- oder ausschalten",
+    "fr": "Activer ou désactiver le mode veille",
+    "es": "Activar o desactivar el modo reposo",
+    "it": "Attiva o disattiva la modalità sospensione"
+  },
+  "titleFormatted": {
+    "en": "Turn sleep mode [[state]]",
+    "nl": "Zet slaapstand [[state]]",
+    "de": "Schalte Schlafmodus [[state]]",
+    "fr": "[[state]] le mode veille",
+    "es": "[[state]] el modo reposo",
+    "it": "[[state]] la modalità sospensione"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station&capabilities=onoff.sleep"
+    },
+    {
+      "type": "dropdown",
+      "name": "state",
+      "title": {
+        "en": "State",
+        "nl": "Stand",
+        "de": "Zustand",
+        "fr": "Action",
+        "es": "Acción",
+        "it": "Azione"
+      },
+      "values": [
+        {
+          "id": "on",
+          "title": {
+            "en": "on",
+            "nl": "aan",
+            "de": "ein",
+            "fr": "Activer",
+            "es": "Activar",
+            "it": "Attiva"
+          }
+        },
+        {
+          "id": "off",
+          "title": {
+            "en": "off",
+            "nl": "uit",
+            "de": "aus",
+            "fr": "Désactiver",
+            "es": "Desactivar",
+            "it": "Disattiva"
+          }
+        }
+      ]
+    }
+  ]
+}

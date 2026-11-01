@@ -1,7 +1,21 @@
 {
   "type": "number",
-  "title": { "en": "Battery level" },
-  "units": { "en": "%" },
+  "title": {
+    "en": "Battery level",
+    "nl": "Batterijniveau",
+    "de": "Akkustand",
+    "fr": "Niveau de batterie",
+    "es": "Nivel de batería",
+    "it": "Livello batteria"
+  },
+  "units": {
+    "en": "%",
+    "nl": "%",
+    "de": "%",
+    "fr": "%",
+    "es": "%",
+    "it": "%"
+  },
   "decimals": 0,
   "min": 0,
   "max": 100,

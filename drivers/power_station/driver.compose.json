@@ -1,6 +1,11 @@
 {
   "name": {
-    "en": "Power Station"
+    "en": "Power Station",
+    "nl": "Powerstation",
+    "de": "Powerstation",
+    "fr": "Station d'énergie",
+    "es": "Estación de energía",
+    "it": "Power station"
   },
   "class": "battery",
   "capabilities": [
@@ -27,53 +32,103 @@
   "capabilitiesOptions": {
     "measure_power": {
       "title": {
-        "en": "Battery power"
+        "en": "Battery power",
+        "nl": "Batterijvermogen",
+        "de": "Akkuleistung",
+        "fr": "Puissance batterie",
+        "es": "Potencia de batería",
+        "it": "Potenza batteria"
       },
       "insightsTitleTrue": {
-        "en": "Battery power"
+        "en": "Battery power",
+        "nl": "Batterijvermogen",
+        "de": "Akkuleistung",
+        "fr": "Puissance batterie",
+        "es": "Potencia de batería",
+        "it": "Potenza batteria"
       }
     },
     "measure_power.pv_in": {
       "title": {
-        "en": "Solar input"
+        "en": "Solar input",
+        "nl": "Zonne-ingang",
+        "de": "Solareingang",
+        "fr": "Entrée solaire",
+        "es": "Entrada solar",
+        "it": "Ingresso solare"
       }
     },
     "measure_power.grid_in": {
       "title": {
-        "en": "Grid input"
+        "en": "Grid input",
+        "nl": "Netingang",
+        "de": "Netzeingang",
+        "fr": "Entrée secteur",
+        "es": "Entrada de red",
+        "it": "Ingresso rete"
       }
     },
     "measure_power.ac_out": {
       "title": {
-        "en": "AC output"
+        "en": "AC output",
+        "nl": "AC-uitgang",
+        "de": "AC-Ausgang",
+        "fr": "Sortie AC",
+        "es": "Salida AC",
+        "it": "Uscita AC"
       }
     },
     "measure_power.dc_out": {
       "title": {
-        "en": "DC output"
+        "en": "DC output",
+        "nl": "DC-uitgang",
+        "de": "DC-Ausgang",
+        "fr": "Sortie DC",
+        "es": "Salida DC",
+        "it": "Uscita DC"
       }
     },
     "onoff.ac": {
       "title": {
-        "en": "AC output"
+        "en": "AC output",
+        "nl": "AC-uitgang",
+        "de": "AC-Ausgang",
+        "fr": "Sortie AC",
+        "es": "Salida AC",
+        "it": "Uscita AC"
       },
       "uiComponent": "button"
     },
     "onoff.dc": {
       "title": {
-        "en": "DC output"
+        "en": "DC output",
+        "nl": "DC-uitgang",
+        "de": "DC-Ausgang",
+        "fr": "Sortie DC",
+        "es": "Salida DC",
+        "it": "Uscita DC"
       },
       "uiComponent": "button"
     },
     "onoff.ac_eco": {
       "title": {
-        "en": "AC ECO"
+        "en": "AC ECO",
+        "nl": "AC ECO",
+        "de": "AC ECO",
+        "fr": "AC ECO",
+        "es": "AC ECO",
+        "it": "AC ECO"
       },
       "uiComponent": "button"
     },
     "onoff.dc_eco": {
       "title": {
-        "en": "DC ECO"
+        "en": "DC ECO",
+        "nl": "DC ECO",
+        "de": "DC ECO",
+        "fr": "DC ECO",
+        "es": "DC ECO",
+        "it": "DC ECO"
       },
       "uiComponent": "button"
     }

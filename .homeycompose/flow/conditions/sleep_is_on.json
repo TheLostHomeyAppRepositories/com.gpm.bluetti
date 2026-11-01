@@ -1,0 +1,17 @@
+{
+  "title": {
+    "en": "Sleep mode is !{{on|off}}",
+    "nl": "Slaapstand staat !{{aan|uit}}",
+    "de": "Schlafmodus ist !{{ein|aus}}",
+    "fr": "Le mode veille est !{{activé|désactivé}}",
+    "es": "El modo reposo está !{{activado|desactivado}}",
+    "it": "La modalità sospensione è !{{attiva|disattiva}}"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station&capabilities=onoff.sleep"
+    }
+  ]
+}

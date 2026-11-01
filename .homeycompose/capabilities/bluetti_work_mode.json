@@ -1,6 +1,13 @@
 {
   "type": "string",
-  "title": { "en": "Working mode" },
+  "title": {
+    "en": "Working mode",
+    "nl": "Werkmodus",
+    "de": "Betriebsmodus",
+    "fr": "Mode de fonctionnement",
+    "es": "Modo de funcionamiento",
+    "it": "Modalità di funzionamento"
+  },
   "getable": true,
   "setable": false,
   "insights": false,

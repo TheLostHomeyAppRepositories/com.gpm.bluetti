@@ -1,0 +1,31 @@
+{
+  "errors": {
+    "auth": "Disconnesso da BLUETTI. Apri le impostazioni del dispositivo e scegli Ripara per accedere di nuovo.",
+    "cloud": "Impossibile raggiungere il cloud BLUETTI: __message__",
+    "offline": "La power station è offline nel cloud BLUETTI. Controlla la sua connessione Wi-Fi.",
+    "not_supported": "Questa power station non supporta la __output__.",
+    "ble_command": "La power station è offline nel cloud BLUETTI e non è stata raggiungibile nemmeno via Bluetooth: __message__",
+    "ble_refused": "La power station non ha eseguito il comando."
+  },
+  "outputs": {
+    "sleep": "modalità sospensione"
+  },
+  "work_mode": {
+    "pv_priority_ups": "PV Priority UPS",
+    "standard_ups": "Standard UPS",
+    "time_control_ups": "Time Control UPS",
+    "custom_ups": "Custom UPS"
+  },
+  "ble": {
+    "not_found": "Power station non trovata via Bluetooth. Homey è nel raggio d'azione?",
+    "status_ok": "OK alle __time__ – batteria __soc__%",
+    "status_error": "Non riuscito: __message__"
+  },
+  "full": "Carica",
+  "timeline": {
+    "offline": "__name__ ha perso la connessione al cloud BLUETTI (niente Wi-Fi o internet sulla power station). Quando sei vicino, ricollegala al Wi-Fi nell'app BLUETTI (può richiedere qualche minuto) e poi chiudi l'app. Se non basta, spegni e riaccendi la power station (si spegne anche l'uscita AC).",
+    "offline_ble": "__name__ ha perso la connessione al cloud BLUETTI (niente Wi-Fi o internet sulla power station). Finché è nel raggio d'azione, Homey continua a leggerla e comandarla via Bluetooth. Quando sei vicino, ricollegala al Wi-Fi nell'app BLUETTI (può richiedere qualche minuto) e poi chiudi l'app. Se non basta, spegni e riaccendi la power station (si spegne anche l'uscita AC).",
+    "online": "__name__ è di nuovo online.",
+    "signed_out": "BLUETTI: disconnesso. Apri __name__ e scegli Ripara per accedere di nuovo."
+  }
+}

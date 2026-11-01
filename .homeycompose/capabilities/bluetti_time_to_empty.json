@@ -1,6 +1,13 @@
 {
   "type": "string",
-  "title": { "en": "Time to empty" },
+  "title": {
+    "en": "Time to empty",
+    "nl": "Tijd tot leeg",
+    "de": "Zeit bis leer",
+    "fr": "Temps avant décharge",
+    "es": "Tiempo hasta agotarse",
+    "it": "Tempo all'esaurimento"
+  },
   "getable": true,
   "setable": false,
   "insights": false,

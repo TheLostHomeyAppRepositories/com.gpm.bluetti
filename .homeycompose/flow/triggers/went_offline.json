@@ -1,6 +1,17 @@
 {
-  "title": { "en": "Power station went offline" },
+  "title": {
+    "en": "Power station went offline",
+    "nl": "Powerstation is offline gegaan",
+    "de": "Powerstation ist offline gegangen",
+    "fr": "La station d'énergie est passée hors ligne",
+    "es": "La estación de energía se ha desconectado",
+    "it": "La power station è andata offline"
+  },
   "args": [
-    { "type": "device", "name": "device", "filter": "driver_id=power_station" }
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station"
+    }
   ]
 }

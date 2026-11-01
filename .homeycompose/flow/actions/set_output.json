@@ -1,27 +1,118 @@
 {
-  "title": { "en": "Turn output on or off" },
-  "titleFormatted": { "en": "Turn [[output]] [[state]]" },
+  "title": {
+    "en": "Turn output on or off",
+    "nl": "Zet een uitgang aan of uit",
+    "de": "Ausgang ein- oder ausschalten",
+    "fr": "Allumer ou éteindre une sortie",
+    "es": "Encender o apagar una salida",
+    "it": "Accendi o spegni un'uscita"
+  },
+  "titleFormatted": {
+    "en": "Turn [[output]] [[state]]",
+    "nl": "Zet [[output]] [[state]]",
+    "de": "Schalte [[output]] [[state]]",
+    "fr": "[[state]] [[output]]",
+    "es": "[[state]] [[output]]",
+    "it": "[[state]] [[output]]"
+  },
   "args": [
-    { "type": "device", "name": "device", "filter": "driver_id=power_station" },
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station"
+    },
     {
       "type": "dropdown",
       "name": "output",
-      "title": { "en": "Output" },
+      "title": {
+        "en": "Output",
+        "nl": "Uitgang",
+        "de": "Ausgang",
+        "fr": "Sortie",
+        "es": "Salida",
+        "it": "Uscita"
+      },
       "values": [
-        { "id": "ac", "title": { "en": "AC output" } },
-        { "id": "dc", "title": { "en": "DC output" } },
-        { "id": "ac_eco", "title": { "en": "AC ECO" } },
-        { "id": "dc_eco", "title": { "en": "DC ECO" } },
-        { "id": "sleep", "title": { "en": "Sleep mode (some models)" } }
+        {
+          "id": "ac",
+          "title": {
+            "en": "AC output",
+            "nl": "AC-uitgang",
+            "de": "AC-Ausgang",
+            "fr": "Sortie AC",
+            "es": "Salida AC",
+            "it": "Uscita AC"
+          }
+        },
+        {
+          "id": "dc",
+          "title": {
+            "en": "DC output",
+            "nl": "DC-uitgang",
+            "de": "DC-Ausgang",
+            "fr": "Sortie DC",
+            "es": "Salida DC",
+            "it": "Uscita DC"
+          }
+        },
+        {
+          "id": "ac_eco",
+          "title": {
+            "en": "AC ECO",
+            "nl": "AC ECO",
+            "de": "AC ECO",
+            "fr": "AC ECO",
+            "es": "AC ECO",
+            "it": "AC ECO"
+          }
+        },
+        {
+          "id": "dc_eco",
+          "title": {
+            "en": "DC ECO",
+            "nl": "DC ECO",
+            "de": "DC ECO",
+            "fr": "DC ECO",
+            "es": "DC ECO",
+            "it": "DC ECO"
+          }
+        }
       ]
     },
     {
       "type": "dropdown",
       "name": "state",
-      "title": { "en": "State" },
+      "title": {
+        "en": "State",
+        "nl": "Stand",
+        "de": "Zustand",
+        "fr": "Action",
+        "es": "Acción",
+        "it": "Azione"
+      },
       "values": [
-        { "id": "on", "title": { "en": "on" } },
-        { "id": "off", "title": { "en": "off" } }
+        {
+          "id": "on",
+          "title": {
+            "en": "on",
+            "nl": "aan",
+            "de": "ein",
+            "fr": "Allumer",
+            "es": "Encender",
+            "it": "Accendi"
+          }
+        },
+        {
+          "id": "off",
+          "title": {
+            "en": "off",
+            "nl": "uit",
+            "de": "aus",
+            "fr": "Éteindre",
+            "es": "Apagar",
+            "it": "Spegni"
+          }
+        }
       ]
     }
   ]

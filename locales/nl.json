@@ -1,0 +1,31 @@
+{
+  "errors": {
+    "auth": "Afgemeld bij BLUETTI. Open de apparaatinstellingen en kies Repareren om opnieuw in te loggen.",
+    "cloud": "Kan de BLUETTI-cloud niet bereiken: __message__",
+    "offline": "De powerstation is offline in de BLUETTI-cloud. Controleer de wifiverbinding.",
+    "not_supported": "Deze powerstation ondersteunt geen __output__.",
+    "ble_command": "De powerstation is offline in de BLUETTI-cloud en was ook niet via Bluetooth bereikbaar: __message__",
+    "ble_refused": "De powerstation heeft de opdracht niet uitgevoerd."
+  },
+  "outputs": {
+    "sleep": "slaapstand"
+  },
+  "work_mode": {
+    "pv_priority_ups": "PV Priority UPS",
+    "standard_ups": "Standard UPS",
+    "time_control_ups": "Time Control UPS",
+    "custom_ups": "Custom UPS"
+  },
+  "ble": {
+    "not_found": "Powerstation niet gevonden via Bluetooth. Is Homey binnen bereik?",
+    "status_ok": "OK om __time__ – batterij __soc__%",
+    "status_error": "Mislukt: __message__"
+  },
+  "full": "Vol",
+  "timeline": {
+    "offline": "__name__ heeft geen verbinding meer met de BLUETTI-cloud (geen wifi of internet op de powerstation). Verbind hem opnieuw met wifi in de BLUETTI-app als je in de buurt bent (dit kan een paar minuten duren) en sluit daarna de app. Helpt dat niet, zet de powerstation dan uit en weer aan (daarmee gaat ook de AC-uitgang uit).",
+    "offline_ble": "__name__ heeft geen verbinding meer met de BLUETTI-cloud (geen wifi of internet op de powerstation). Zolang hij binnen bereik is, blijft Homey hem via Bluetooth uitlezen en schakelen. Verbind hem opnieuw met wifi in de BLUETTI-app als je in de buurt bent (dit kan een paar minuten duren) en sluit daarna de app. Helpt dat niet, zet de powerstation dan uit en weer aan (daarmee gaat ook de AC-uitgang uit).",
+    "online": "__name__ is weer online.",
+    "signed_out": "BLUETTI: afgemeld. Open __name__ en kies Repareren om opnieuw in te loggen."
+  }
+}

@@ -1,14 +1,51 @@
 {
   "type": "enum",
-  "title": { "en": "Connection" },
+  "title": {
+    "en": "Connection",
+    "nl": "Verbinding",
+    "de": "Verbindung",
+    "fr": "Connexion",
+    "es": "Conexión",
+    "it": "Connessione"
+  },
   "getable": true,
   "setable": false,
   "insights": false,
   "uiComponent": "sensor",
   "icon": "/assets/capabilities/connection.svg",
   "values": [
-    { "id": "cloud", "title": { "en": "Cloud" } },
-    { "id": "bluetooth", "title": { "en": "Bluetooth" } },
-    { "id": "offline", "title": { "en": "Offline" } }
+    {
+      "id": "cloud",
+      "title": {
+        "en": "Cloud",
+        "nl": "Cloud",
+        "de": "Cloud",
+        "fr": "Cloud",
+        "es": "Nube",
+        "it": "Cloud"
+      }
+    },
+    {
+      "id": "bluetooth",
+      "title": {
+        "en": "Bluetooth",
+        "nl": "Bluetooth",
+        "de": "Bluetooth",
+        "fr": "Bluetooth",
+        "es": "Bluetooth",
+        "it": "Bluetooth"
+      }
+    },
+    {
+      "id": "offline",
+      "title": {
+        "en": "Offline",
+        "nl": "Offline",
+        "de": "Offline",
+        "fr": "Hors ligne",
+        "es": "Sin conexión",
+        "it": "Offline"
+      }
+    }
   ]
 }

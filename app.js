@@ -47,6 +47,18 @@ class BluettiApp extends Homey.App {
     this.homey.flow.getConditionCard('output_is_on')
       .registerRunListener(async (args) => args.device.isOutputOn(args.output));
 
+    this.connectionChangedTrigger = this.homey.flow.getDeviceTriggerCard('connection_changed')
+      .registerRunListener(async (args, state) => args.connection === state.connection);
+    this.homey.flow.getConditionCard('connection_is')
+      .registerRunListener(async (args) => args.device.getConnection() === args.connection);
+
+    // Sleep mode has its own cards, offered only on devices that have the sleep switch.
+    this.sleepChangedTrigger = this.homey.flow.getDeviceTriggerCard('sleep_changed');
+    this.homey.flow.getActionCard('set_sleep')
+      .registerRunListener(async (args) => args.device.setOutput('sleep', args.state === 'on'));
+    this.homey.flow.getConditionCard('sleep_is_on')
+      .registerRunListener(async (args) => args.device.isOutputOn('sleep'));
+
     this.log(`BLUETTI app v${this.homey.manifest.version} initialized on Homey ${this.homey.version}`
       + ` (${this.homey.platform}${this.homey.platformVersion ? ` v${this.homey.platformVersion}` : ''}),`
       + ` Node ${process.version}, heap ${heapMb()} MB, signed in: ${this.cloud.hasToken()}`);

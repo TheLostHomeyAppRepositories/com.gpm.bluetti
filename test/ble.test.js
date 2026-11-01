@@ -35,6 +35,7 @@ const REGISTERS = {
 
 function simulatedPowerStation({
   gattDelayMs = 0, strayAfterHandshake = false, repeatPeerKey = false, copies = 1, ackDelayMs = 0, outputs = true, applyDelayMs = 0,
+  refused = [],
 } = {}) {
   const registers = { ...REGISTERS };
   const challenge = crypto.randomBytes(4);
@@ -95,7 +96,9 @@ function simulatedPowerStation({
     assert.strictEqual(modbusCrc(cmd.subarray(0, 6)), cmd.readUInt16LE(6), 'command CRC');
     const address = cmd.readUInt16BE(2);
     let resp;
-    if (address >= 2000 && !outputs) {
+    const quantity = cmd[1] === 3 ? cmd.readUInt16BE(4) : 1;
+    const isRefused = (a) => (a >= 2000 && !outputs) || refused.includes(a);
+    if (Array.from({ length: quantity }, (_, i) => address + i).some(isRefused)) {
       // Illegal data address
       resp = Buffer.from([1, cmd[1] | 0x80, 2, 0, 0]);
       resp.writeUInt16LE(modbusCrc(resp.subarray(0, 3)), 3);
@@ -105,12 +108,12 @@ function simulatedPowerStation({
       else registers[address] = value;
       resp = Buffer.from(cmd.subarray(0, 8));
     } else {
-      resp = Buffer.alloc(7);
+      resp = Buffer.alloc(5 + 2 * quantity);
       resp[0] = 1;
       resp[1] = 3;
-      resp[2] = 2;
-      resp.writeUInt16BE(registers[address] || 0, 3);
-      resp.writeUInt16LE(modbusCrc(resp.subarray(0, 5)), 5);
+      resp[2] = 2 * quantity;
+      for (let i = 0; i < quantity; i++) resp.writeUInt16BE(registers[address + i] || 0, 3 + 2 * i);
+      resp.writeUInt16LE(modbusCrc(resp.subarray(0, resp.length - 2)), resp.length - 2);
     }
     send(aesEncrypt(resp, secure, null));
   };
@@ -257,4 +260,13 @@ test('a model without output registers still reads its values', async () => {
   const { values, outputs } = await newReader().read(simulatedPowerStation({ outputs: false }));
   assert.strictEqual(values.soc, 87);
   assert.deepStrictEqual(outputs, {});
+});
+
+test('scans a register range and reads a refused block one by one', async () => {
+  const station = simulatedPowerStation({ refused: [2025] });
+  const values = await newReader().readRange(station, 2010, 20);
+  assert.strictEqual(values.length, 20);
+  assert.strictEqual(values[1], 1); // 2011 AC on
+  assert.strictEqual(values[15], null); // 2025 refused
+  assert.strictEqual(values[14], 0);
 });

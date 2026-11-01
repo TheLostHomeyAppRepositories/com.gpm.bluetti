@@ -1,0 +1,31 @@
+{
+  "errors": {
+    "auth": "Se cerró la sesión de BLUETTI. Abre los ajustes del dispositivo y elige Reparar para volver a iniciar sesión.",
+    "cloud": "No se puede conectar con la nube de BLUETTI: __message__",
+    "offline": "La estación de energía está sin conexión en la nube de BLUETTI. Comprueba su conexión wifi.",
+    "not_supported": "Esta estación de energía no admite el __output__.",
+    "ble_command": "La estación de energía está sin conexión en la nube de BLUETTI y tampoco se pudo conectar por Bluetooth: __message__",
+    "ble_refused": "La estación de energía no ejecutó el comando."
+  },
+  "outputs": {
+    "sleep": "modo reposo"
+  },
+  "work_mode": {
+    "pv_priority_ups": "PV Priority UPS",
+    "standard_ups": "Standard UPS",
+    "time_control_ups": "Time Control UPS",
+    "custom_ups": "Custom UPS"
+  },
+  "ble": {
+    "not_found": "No se encontró la estación de energía por Bluetooth. ¿Está Homey al alcance?",
+    "status_ok": "OK a las __time__ – batería __soc__ %",
+    "status_error": "Error: __message__"
+  },
+  "full": "Llena",
+  "timeline": {
+    "offline": "__name__ perdió la conexión con la nube de BLUETTI (sin wifi ni internet en la estación). Cuando estés cerca, vuelve a conectarla al wifi en la app de BLUETTI (puede tardar unos minutos) y después cierra la app. Si no funciona, apaga y vuelve a encender la estación (esto también apaga su salida AC).",
+    "offline_ble": "__name__ perdió la conexión con la nube de BLUETTI (sin wifi ni internet en la estación). Mientras esté al alcance, Homey sigue leyéndola y controlándola por Bluetooth. Cuando estés cerca, vuelve a conectarla al wifi en la app de BLUETTI (puede tardar unos minutos) y después cierra la app. Si no funciona, apaga y vuelve a encender la estación (esto también apaga su salida AC).",
+    "online": "__name__ vuelve a estar en línea.",
+    "signed_out": "BLUETTI: sesión cerrada. Abre __name__ y elige Reparar para volver a iniciar sesión."
+  }
+}

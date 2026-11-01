@@ -1,0 +1,3 @@
+Porta la tua power station BLUETTI in Homey. Visualizza livello della batteria, ingresso solare e da rete, consumi e tempo residuo, accendi e spegni le uscite AC e DC e usa tutto nei Flow. Le modifiche fatte sulla power station o nell'app BLUETTI compaiono in Homey in pochi secondi, e un Bluetooth di riserva opzionale continua a fornire le letture e a comandare le uscite quando il Wi-Fi o il cloud BLUETTI non sono disponibili.
+
+Questa è un'app della community, non realizzata né supportata da BLUETTI, e testata con la Elite 30 V2. La tua power station deve essere configurata in Wi-Fi con l'app BLUETTI. Esperienze con altri modelli, domande e dettagli sono benvenuti nella discussione della Homey Community.

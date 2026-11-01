@@ -1,0 +1,3 @@
+Hol deine BLUETTI-Powerstation in Homey. Sieh Akkustand, Solar- und Netzeingang, Verbrauch und Restzeit, schalte die AC- und DC-Ausgänge und nutze alles in Flows. Änderungen an der Powerstation oder in der BLUETTI-App erscheinen in Homey innerhalb von Sekunden, und ein optionaler Bluetooth-Fallback liefert weiter Werte und hält die Ausgänge schaltbar, wenn WLAN oder die BLUETTI-Cloud ausfallen.
+
+Dies ist eine Community-App, nicht von BLUETTI entwickelt oder unterstützt, und mit der Elite 30 V2 getestet. Deine Powerstation muss mit der BLUETTI-App im WLAN eingerichtet sein. Erfahrungen mit anderen Modellen, Fragen und Details sind im Thema der Homey Community willkommen.

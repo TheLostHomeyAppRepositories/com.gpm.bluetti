@@ -1,0 +1,3 @@
+Lleva tu estación de energía BLUETTI a Homey. Consulta el nivel de batería, la entrada solar y de red, el consumo y el tiempo restante, conmuta las salidas AC y DC y úsalo todo en Flows. Los cambios hechos en la estación o en la app de BLUETTI aparecen en Homey en pocos segundos, y un respaldo opcional por Bluetooth sigue leyendo los valores y permite conmutar las salidas cuando el wifi o la nube de BLUETTI no funcionan.
+
+Esta es una app de la comunidad, no creada ni respaldada por BLUETTI, y probada con la Elite 30 V2. Tu estación debe estar configurada en wifi con la app de BLUETTI. Las experiencias con otros modelos, las preguntas y los detalles son bienvenidos en el tema de la Homey Community.

@@ -1,0 +1,72 @@
+{
+  "title": {
+    "en": "Connection !{{is|is not}}",
+    "nl": "Verbinding !{{is|is niet}}",
+    "de": "Verbindung !{{ist|ist nicht}}",
+    "fr": "La connexion !{{est|n'est pas}}",
+    "es": "La conexión !{{es|no es}}",
+    "it": "La connessione !{{è|non è}}"
+  },
+  "titleFormatted": {
+    "en": "Connection !{{is|is not}} [[connection]]",
+    "nl": "Verbinding !{{is|is niet}} [[connection]]",
+    "de": "Verbindung !{{ist|ist nicht}} [[connection]]",
+    "fr": "La connexion !{{est|n'est pas}} [[connection]]",
+    "es": "La conexión !{{es|no es}} [[connection]]",
+    "it": "La connessione !{{è|non è}} [[connection]]"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station"
+    },
+    {
+      "type": "dropdown",
+      "name": "connection",
+      "title": {
+        "en": "Connection",
+        "nl": "Verbinding",
+        "de": "Verbindung",
+        "fr": "Connexion",
+        "es": "Conexión",
+        "it": "Connessione"
+      },
+      "values": [
+        {
+          "id": "cloud",
+          "title": {
+            "en": "Cloud",
+            "nl": "Cloud",
+            "de": "Cloud",
+            "fr": "Cloud",
+            "es": "Nube",
+            "it": "Cloud"
+          }
+        },
+        {
+          "id": "bluetooth",
+          "title": {
+            "en": "Bluetooth",
+            "nl": "Bluetooth",
+            "de": "Bluetooth",
+            "fr": "Bluetooth",
+            "es": "Bluetooth",
+            "it": "Bluetooth"
+          }
+        },
+        {
+          "id": "offline",
+          "title": {
+            "en": "Offline",
+            "nl": "Offline",
+            "de": "Offline",
+            "fr": "Hors ligne",
+            "es": "Sin conexión",
+            "it": "Offline"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,21 +1,97 @@
 {
-  "title": { "en": "An output was turned on or off" },
-  "titleFormatted": { "en": "[[output]] was turned on or off" },
+  "title": {
+    "en": "An output was turned on or off",
+    "nl": "Een uitgang is aan- of uitgezet",
+    "de": "Ein Ausgang wurde ein- oder ausgeschaltet",
+    "fr": "Une sortie a été allumée ou éteinte",
+    "es": "Se ha encendido o apagado una salida",
+    "it": "Un'uscita è stata accesa o spenta"
+  },
+  "titleFormatted": {
+    "en": "[[output]] was turned on or off",
+    "nl": "[[output]] is aan- of uitgezet",
+    "de": "[[output]] wurde ein- oder ausgeschaltet",
+    "fr": "[[output]] a changé d'état",
+    "es": "[[output]] ha cambiado de estado",
+    "it": "[[output]] ha cambiato stato"
+  },
   "tokens": [
-    { "name": "state", "type": "boolean", "title": { "en": "On" }, "example": true }
+    {
+      "name": "state",
+      "type": "boolean",
+      "title": {
+        "en": "On",
+        "nl": "Aan",
+        "de": "Ein",
+        "fr": "En marche",
+        "es": "Encendido",
+        "it": "Acceso"
+      },
+      "example": true
+    }
   ],
   "args": [
-    { "type": "device", "name": "device", "filter": "driver_id=power_station" },
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station"
+    },
     {
       "type": "dropdown",
       "name": "output",
-      "title": { "en": "Output" },
+      "title": {
+        "en": "Output",
+        "nl": "Uitgang",
+        "de": "Ausgang",
+        "fr": "Sortie",
+        "es": "Salida",
+        "it": "Uscita"
+      },
       "values": [
-        { "id": "ac", "title": { "en": "AC output" } },
-        { "id": "dc", "title": { "en": "DC output" } },
-        { "id": "ac_eco", "title": { "en": "AC ECO" } },
-        { "id": "dc_eco", "title": { "en": "DC ECO" } },
-        { "id": "sleep", "title": { "en": "Sleep mode (some models)" } }
+        {
+          "id": "ac",
+          "title": {
+            "en": "AC output",
+            "nl": "AC-uitgang",
+            "de": "AC-Ausgang",
+            "fr": "Sortie AC",
+            "es": "Salida AC",
+            "it": "Uscita AC"
+          }
+        },
+        {
+          "id": "dc",
+          "title": {
+            "en": "DC output",
+            "nl": "DC-uitgang",
+            "de": "DC-Ausgang",
+            "fr": "Sortie DC",
+            "es": "Salida DC",
+            "it": "Uscita DC"
+          }
+        },
+        {
+          "id": "ac_eco",
+          "title": {
+            "en": "AC ECO",
+            "nl": "AC ECO",
+            "de": "AC ECO",
+            "fr": "AC ECO",
+            "es": "AC ECO",
+            "it": "AC ECO"
+          }
+        },
+        {
+          "id": "dc_eco",
+          "title": {
+            "en": "DC ECO",
+            "nl": "DC ECO",
+            "de": "DC ECO",
+            "fr": "DC ECO",
+            "es": "DC ECO",
+            "it": "DC ECO"
+          }
+        }
       ]
     }
   ]

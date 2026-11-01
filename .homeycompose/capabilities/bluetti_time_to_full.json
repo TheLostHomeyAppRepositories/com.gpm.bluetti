@@ -1,6 +1,13 @@
 {
   "type": "string",
-  "title": { "en": "Time to full" },
+  "title": {
+    "en": "Time to full",
+    "nl": "Tijd tot vol",
+    "de": "Zeit bis voll",
+    "fr": "Temps avant charge complète",
+    "es": "Tiempo hasta carga completa",
+    "it": "Tempo alla carica completa"
+  },
   "getable": true,
   "setable": false,
   "insights": false,

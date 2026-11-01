@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Sleep mode was turned on or off",
+    "nl": "Slaapstand is aan- of uitgezet",
+    "de": "Schlafmodus wurde ein- oder ausgeschaltet",
+    "fr": "Le mode veille a été activé ou désactivé",
+    "es": "El modo reposo se ha activado o desactivado",
+    "it": "La modalità sospensione è stata attivata o disattivata"
+  },
+  "tokens": [
+    {
+      "name": "state",
+      "type": "boolean",
+      "title": {
+        "en": "On",
+        "nl": "Aan",
+        "de": "Ein",
+        "fr": "Activé",
+        "es": "Activado",
+        "it": "Attiva"
+      },
+      "example": true
+    }
+  ],
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=power_station&capabilities=onoff.sleep"
+    }
+  ]
+}

@@ -26,7 +26,11 @@ const SWITCH_MAP = {
 };
 // Switches only some models have (e.g. Elite 200 V2): added when the cloud first reports them.
 const OPTIONAL_SWITCHES = {
-  sleep: { title: { en: 'Sleep mode' } },
+  sleep: {
+    title: {
+      en: 'Sleep mode', nl: 'Slaapstand', de: 'Schlafmodus', fr: 'Mode veille', es: 'Modo reposo', it: 'Modalità sospensione',
+    },
+  },
 };
 
 // SetCtrlWorkMode values, named as in the BLUETTI app. All four confirmed on EL30V2.
@@ -60,6 +64,10 @@ const BLE_STALE_MS = 10 * 60000;
 // After a refused connection (usually the BLUETTI phone app using the single BLE link, e.g. to set
 // up Wi-Fi again), leave Bluetooth alone for a while so the phone can finish.
 const BLE_BACKOFF_MS = 3 * 60000;
+// Diagnostic register scan: the control block, read again this long after a switch changes.
+const BLE_SCAN_START = 2000;
+const BLE_SCAN_COUNT = 300;
+const BLE_SCAN_DELAY_MS = 10000;
 // Wait after the cloud reports the unit back online before trusting its values.
 const RECONNECT_SETTLE_MS = 10000;
 // Coalesce bursts of real-time notifications into one read.
@@ -94,7 +102,12 @@ class PowerStationDevice extends Homey.Device {
     await this._syncBackupCapabilities();
 
     for (const output of Object.keys(SWITCH_MAP)) {
-      if (this.hasCapability(`onoff.${output}`)) this._listenOutput(output);
+      if (!this.hasCapability(`onoff.${output}`)) continue;
+      this._listenOutput(output);
+      // Optional switches were added with English-only titles before the app was translated.
+      if (OPTIONAL_SWITCHES[output]) {
+        await this.setCapabilityOptions(`onoff.${output}`, { ...OPTIONAL_SWITCHES[output], uiComponent: 'button' }).catch(this.error);
+      }
     }
 
     if (!this.getStoreValue('bound')) {
@@ -313,7 +326,7 @@ class PowerStationDevice extends Homey.Device {
       await this.unsetWarning().catch(this.error);
     }
     await this.setAvailable().catch(this.error);
-    await this._set('bluetti_connection', 'cloud');
+    await this._setConnection('cloud');
 
     if (product.model && this.getSetting('model') !== product.model) {
       await this.setSettings({ model: String(product.model) }).catch(this.error);
@@ -374,7 +387,7 @@ class PowerStationDevice extends Homey.Device {
     if (states.SetCtrlWorkMode !== undefined) {
       const mode = this._workModeLabel(entries.SetCtrlWorkMode);
       const previousMode = this.getCapabilityValue('bluetti_work_mode');
-      if (previousMode && previousMode !== mode) this.log(`Working mode changed: ${previousMode} → ${mode}`);
+      if (previousMode && previousMode !== '–' && previousMode !== mode) this.log(`Working mode changed: ${previousMode} → ${mode}`);
       await this._set('bluetti_work_mode', mode);
     }
   }
@@ -390,8 +403,22 @@ class PowerStationDevice extends Homey.Device {
 
   // Neither the cloud nor Bluetooth reaches the power station.
   async _setOffline(message) {
-    await this._set('bluetti_connection', 'offline');
+    await this._setConnection('offline');
     await this.setUnavailable(message).catch(this.error);
+  }
+
+  // How Homey reaches the power station: cloud, bluetooth or offline. Fires "Connection changed".
+  async _setConnection(connection) {
+    const previous = this.getCapabilityValue('bluetti_connection');
+    await this._set('bluetti_connection', connection);
+    if (previous && previous !== connection) {
+      this.log(`Connection ${previous} → ${connection}`);
+      this.homey.app.connectionChangedTrigger.trigger(this, {}, { connection }).catch(this.error);
+    }
+  }
+
+  getConnection() {
+    return this.getCapabilityValue('bluetti_connection');
   }
 
   async _set(capability, value) {
@@ -422,8 +449,44 @@ class PowerStationDevice extends Homey.Device {
     return this._ble;
   }
 
+  // Diagnostics: reads the control registers over Bluetooth and logs what changed since the last
+  // scan. Comparing scans around a cloud command shows which register holds a setting that
+  // bluetti-bt-lib does not map yet, such as sleep mode.
+  // Changes close together share one scan, labelled with all of them.
+  _scheduleBleScan(reason) {
+    if (this._bleScanTimer) this.homey.clearTimeout(this._bleScanTimer);
+    this._bleScanReasons = [...(this._bleScanReasons || []), reason];
+    this._bleScanTimer = this.homey.setTimeout(() => {
+      const reasons = this._bleScanReasons.join(', ');
+      this._bleScanTimer = null;
+      this._bleScanReasons = [];
+      this._bleScan(reasons);
+    }, BLE_SCAN_DELAY_MS);
+  }
+
+  async _bleScan(reason) {
+    const end = BLE_SCAN_START + BLE_SCAN_COUNT - 1;
+    try {
+      const values = await this._bleExclusive(() => this._bleWithAd((ad) => this.ble.readRange(ad, BLE_SCAN_START, BLE_SCAN_COUNT)));
+      const previous = this._bleScanValues;
+      this._bleScanValues = values;
+      const at = (i) => BLE_SCAN_START + i;
+      if (!previous) {
+        const set = values.map((v, i) => (v ? `${at(i)}=${v}` : null)).filter(Boolean);
+        const refused = values.filter((v) => v === null).length;
+        this.log(`BLE scan (${reason}) ${BLE_SCAN_START}-${end}: ${set.join(' ') || 'all 0'}; ${refused} refused`);
+        return;
+      }
+      const changes = values.map((v, i) => (v !== previous[i] ? `${at(i)}: ${previous[i]}→${v}` : null)).filter(Boolean);
+      this.log(`BLE scan (${reason}): ${changes.length ? changes.join(', ') : 'no changes'}`);
+    } catch (err) {
+      this.error(`BLE scan (${reason}) failed:`, err.message);
+    }
+  }
+
   // Cloud unusable: read over Bluetooth instead. Returns true when values are current.
-  async _bleFallback(warningKey = 'ble.warning') {
+  // The Connection sensor shows Bluetooth; a warning is only set when the user must act (signed out).
+  async _bleFallback(warningKey = null) {
     if (!this.getSetting('ble_fallback')) return false;
     const recentOk = () => Boolean(this._viaBle && this._bleLastOk && Date.now() - this._bleLastOk < BLE_STALE_MS);
     if (this._bleLastOk && Date.now() - this._bleLastOk < BLE_MIN_INTERVAL_MS) return true;
@@ -433,10 +496,12 @@ class PowerStationDevice extends Homey.Device {
       if (!this._viaBle) {
         this._viaBle = true;
         this.log('Cloud unavailable, using Bluetooth fallback');
+        // Bluetooth has no working mode register: show it as unknown rather than stale.
+        await this._set('bluetti_work_mode', '–');
       }
       await this.setAvailable().catch(this.error);
-      await this._set('bluetti_connection', 'bluetooth');
-      await this.setWarning(this.homey.__(warningKey)).catch(this.error);
+      await this._setConnection('bluetooth');
+      if (warningKey) await this.setWarning(this.homey.__(warningKey)).catch(this.error);
       return true;
     } catch (err) {
       this._stats.bleFails += 1;
@@ -576,7 +641,7 @@ class PowerStationDevice extends Homey.Device {
   // Optional switches (sleep mode) exist only on some models.
   _requireOutput(output) {
     if (!this.hasCapability(`onoff.${output}`)) {
-      throw new Error(this.homey.__('errors.not_supported', { output: OPTIONAL_SWITCHES[output].title.en.toLowerCase() }));
+      throw new Error(this.homey.__('errors.not_supported', { output: this.homey.__(`outputs.${output}`) }));
     }
   }
 
@@ -608,7 +673,9 @@ class PowerStationDevice extends Homey.Device {
     await this._set(capability, on);
     if (previous !== null && previous !== on) {
       this.log(`Output ${output} turned ${on ? 'on' : 'off'} (by ${source})`);
-      this.homey.app.outputChangedTrigger.trigger(this, { state: on }, { output }).catch(this.error);
+      if (output === 'sleep') this.homey.app.sleepChangedTrigger.trigger(this, { state: on }).catch(this.error);
+      else this.homey.app.outputChangedTrigger.trigger(this, { state: on }, { output }).catch(this.error);
+      if (this.getSetting('ble_scan')) this._scheduleBleScan(`${output} ${on ? 'on' : 'off'}`);
     }
   }
 
@@ -622,6 +689,10 @@ class PowerStationDevice extends Homey.Device {
       this.homey.setTimeout(() => {
         this._syncBackupCapabilities().then(() => this.restartPolling(500)).catch(this.error);
       }, 500);
+    }
+    if (changedKeys.includes('ble_scan') && newSettings.ble_scan) {
+      this._bleScanValues = null;
+      this.homey.setTimeout(() => this._bleScan('start'), 500);
     }
     if (changedKeys.includes('ble_fallback')) {
       if (newSettings.ble_fallback) {
@@ -645,8 +716,10 @@ class PowerStationDevice extends Homey.Device {
     if (this._summaryTimer) this.homey.clearInterval(this._summaryTimer);
     if (this._pollTimer) this.homey.clearTimeout(this._pollTimer);
     if (this._notifyTimer) this.homey.clearTimeout(this._notifyTimer);
+    if (this._bleScanTimer) this.homey.clearTimeout(this._bleScanTimer);
     this._pollTimer = null;
     this._notifyTimer = null;
+    this._bleScanTimer = null;
   }
 
   async onDeleted() {

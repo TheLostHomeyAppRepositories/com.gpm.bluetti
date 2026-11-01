@@ -1,7 +1,21 @@
 {
   "type": "number",
-  "title": { "en": "Backup time (minutes)" },
-  "units": { "en": "min" },
+  "title": {
+    "en": "Backup time (minutes)",
+    "nl": "Back-uptijd (minuten)",
+    "de": "Überbrückungszeit (Minuten)",
+    "fr": "Autonomie de secours (minutes)",
+    "es": "Tiempo de respaldo (minutos)",
+    "it": "Autonomia di backup (minuti)"
+  },
+  "units": {
+    "en": "min",
+    "nl": "min",
+    "de": "min",
+    "fr": "min",
+    "es": "min",
+    "it": "min"
+  },
   "decimals": 0,
   "getable": true,
   "setable": false,

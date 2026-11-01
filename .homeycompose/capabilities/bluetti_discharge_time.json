@@ -1,10 +1,20 @@
 {
   "type": "number",
   "title": {
-    "en": "Time to empty (minutes)"
+    "en": "Time to empty (minutes)",
+    "nl": "Tijd tot leeg (minuten)",
+    "de": "Zeit bis leer (Minuten)",
+    "fr": "Temps avant décharge (minutes)",
+    "es": "Tiempo hasta agotarse (minutos)",
+    "it": "Tempo all'esaurimento (minuti)"
   },
   "units": {
-    "en": "min"
+    "en": "min",
+    "nl": "min",
+    "de": "min",
+    "fr": "min",
+    "es": "min",
+    "it": "min"
   },
   "decimals": 0,
   "getable": true,

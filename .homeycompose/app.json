@@ -1,16 +1,26 @@
 {
   "id": "com.gpm.bluetti",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "BLUETTI"
+    "en": "BLUETTI",
+    "nl": "BLUETTI",
+    "de": "BLUETTI",
+    "fr": "BLUETTI",
+    "es": "BLUETTI",
+    "it": "BLUETTI"
   },
   "description": {
-    "en": "Your backup power, part of your smart home"
+    "en": "Your backup power, part of your smart home",
+    "nl": "Je back-upstroom, onderdeel van je slimme huis",
+    "de": "Deine Notstromversorgung als Teil deines Smart Homes",
+    "fr": "Votre alimentation de secours, intégrée à votre maison connectée",
+    "es": "Tu energía de respaldo, parte de tu hogar inteligente",
+    "it": "La tua energia di riserva, parte della tua casa smart"
   },
   "category": [
     "energy"
@@ -23,6 +33,48 @@
       "elite 30 v2",
       "solar",
       "ups"
+    ],
+    "nl": [
+      "bluetti",
+      "powerstation",
+      "accu",
+      "thuisbatterij",
+      "zonne-energie",
+      "ups",
+      "elite 30 v2"
+    ],
+    "de": [
+      "bluetti",
+      "powerstation",
+      "akku",
+      "stromspeicher",
+      "solar",
+      "usv",
+      "elite 30 v2"
+    ],
+    "fr": [
+      "bluetti",
+      "station d'énergie",
+      "batterie",
+      "solaire",
+      "onduleur",
+      "elite 30 v2"
+    ],
+    "es": [
+      "bluetti",
+      "estación de energía",
+      "batería",
+      "solar",
+      "sai",
+      "elite 30 v2"
+    ],
+    "it": [
+      "bluetti",
+      "power station",
+      "batteria",
+      "solare",
+      "ups",
+      "elite 30 v2"
     ]
   },
   "brandColor": "#00A2E4",
