@@ -47,5 +47,13 @@
     "fr": "Le mode veille peut maintenant être commandé pendant que Homey lit la station par Bluetooth parce que les serveurs BLUETTI répondent lentement. Si le cloud ne répond pas non plus à la commande, le message d'erreur l'indique désormais, au lieu de demander de vérifier le Wi-Fi. Le scan des registres Bluetooth répète maintenant à chaque scan toutes les modifications depuis le début.",
     "es": "El modo reposo ahora se puede cambiar mientras Homey lee la estación por Bluetooth porque los servidores de BLUETTI tardan en responder. Si la nube tampoco responde al comando, el error ahora lo indica, en lugar de pedir que compruebes el wifi. El escaneo de registros Bluetooth ahora repite en cada escaneo todos los cambios desde el inicio.",
     "it": "La modalità sospensione ora si può cambiare anche mentre Homey legge la power station via Bluetooth perché i server BLUETTI rispondono lentamente. Se anche il cloud non risponde al comando, l'errore ora lo dice, invece di chiedere di controllare il Wi-Fi. La scansione dei registri Bluetooth ora ripete a ogni scansione tutte le modifiche dall'inizio."
+  },
+  "0.4.10": {
+    "en": "New setting \"Keep AC output on\": Homey will not switch the AC output off or turn AC ECO on, for power stations that power your router or Homey. The Bluetooth register scan now turns itself off after 1 hour.",
+    "nl": "Nieuwe instelling \"AC-uitgang altijd aan\": Homey schakelt de AC-uitgang niet uit en zet AC ECO niet aan, voor powerstations die je router of Homey van stroom voorzien. De Bluetooth-registerscan schakelt zichzelf nu na 1 uur uit.",
+    "de": "Neue Einstellung \"AC-Ausgang immer an\": Homey schaltet den AC-Ausgang nicht aus und AC ECO nicht ein, für Powerstations, die deinen Router oder Homey versorgen. Der Bluetooth-Registerscan schaltet sich jetzt nach 1 Stunde selbst aus.",
+    "fr": "Nouveau réglage « Garder la sortie AC allumée » : Homey n'éteint pas la sortie AC et n'active pas l'AC ECO, pour les stations qui alimentent votre routeur ou votre Homey. Le scan des registres Bluetooth se désactive désormais de lui-même après 1 heure.",
+    "es": "Nuevo ajuste \"Mantener la salida AC encendida\": Homey no apaga la salida AC ni activa AC ECO, para estaciones que alimentan tu router o tu Homey. El escaneo de registros Bluetooth ahora se desactiva solo al cabo de 1 hora.",
+    "it": "Nuova impostazione \"Mantieni accesa l'uscita AC\": Homey non spegne l'uscita AC e non attiva AC ECO, per le power station che alimentano il router o Homey. La scansione dei registri Bluetooth ora si disattiva da sola dopo 1 ora."
   }
 }

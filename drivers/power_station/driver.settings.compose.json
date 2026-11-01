@@ -62,6 +62,27 @@
     }
   },
   {
+    "id": "ac_keep_on",
+    "type": "checkbox",
+    "value": false,
+    "label": {
+      "en": "Keep AC output on",
+      "nl": "AC-uitgang altijd aan",
+      "de": "AC-Ausgang immer an",
+      "fr": "Garder la sortie AC allumée",
+      "es": "Mantener la salida AC encendida",
+      "it": "Mantieni accesa l'uscita AC"
+    },
+    "hint": {
+      "en": "Homey will not switch the AC output off, from the device or from flows, and will not turn AC ECO on (AC ECO switches AC off at low load). Use this when the power station powers your router or Homey. The BLUETTI app and the power button can still switch AC off.",
+      "nl": "Homey schakelt de AC-uitgang niet uit, niet via het apparaat en niet via flows, en zet AC ECO niet aan (AC ECO schakelt AC uit bij lage belasting). Handig als de powerstation je router of Homey van stroom voorziet. De BLUETTI-app en de aan/uit-knop kunnen AC nog wel uitschakelen.",
+      "de": "Homey schaltet den AC-Ausgang nicht aus, weder am Gerät noch über Flows, und schaltet AC ECO nicht ein (AC ECO schaltet AC bei geringer Last ab). Nützlich, wenn die Powerstation deinen Router oder Homey versorgt. Die BLUETTI-App und der Ein-/Ausschalter können AC weiterhin ausschalten.",
+      "fr": "Homey n'éteint pas la sortie AC, ni depuis l'appareil ni depuis les flows, et n'active pas l'AC ECO (l'AC ECO coupe l'AC en cas de faible charge). Utile quand la station alimente votre routeur ou votre Homey. L'application BLUETTI et le bouton d'alimentation peuvent toujours couper l'AC.",
+      "es": "Homey no apaga la salida AC, ni desde el dispositivo ni desde los flows, y no activa AC ECO (AC ECO apaga la AC con poca carga). Útil cuando la estación alimenta tu router o tu Homey. La app de BLUETTI y el botón de encendido aún pueden apagar la AC.",
+      "it": "Homey non spegne l'uscita AC, né dal dispositivo né dai flow, e non attiva AC ECO (AC ECO spegne l'AC con carico basso). Utile quando la power station alimenta il router o Homey. L'app BLUETTI e il pulsante di accensione possono comunque spegnere l'AC."
+    }
+  },
+  {
     "type": "group",
     "label": {
       "en": "Bluetooth fallback",
@@ -213,12 +234,12 @@
           "it": "Scansione registri Bluetooth"
         },
         "hint": {
-          "en": "Only when the developer asks for it. Reads the power station's settings over Bluetooth now, and again 10 seconds after each output or sleep mode change, and writes what changed to the app log. Homey must be within Bluetooth range and the BLUETTI app must not be connected over Bluetooth. Nothing is written to the power station. Turn it off when you are done.",
-          "nl": "Alleen als de ontwikkelaar erom vraagt. Leest de instellingen van de powerstation nu via Bluetooth uit, en opnieuw 10 seconden na elke wijziging van een uitgang of de slaapstand, en schrijft de verschillen naar het app-logboek. Homey moet binnen Bluetooth-bereik zijn en de BLUETTI-app mag niet via Bluetooth verbonden zijn. Er wordt niets naar de powerstation geschreven. Zet het uit als je klaar bent.",
-          "de": "Nur auf Anfrage des Entwicklers. Liest die Einstellungen der Powerstation jetzt per Bluetooth und erneut 10 Sekunden nach jeder Änderung eines Ausgangs oder des Schlafmodus, und schreibt die Unterschiede ins App-Protokoll. Homey muss in Bluetooth-Reichweite sein und die BLUETTI-App darf nicht per Bluetooth verbunden sein. Es wird nichts auf die Powerstation geschrieben. Danach wieder ausschalten.",
-          "fr": "Uniquement à la demande du développeur. Lit maintenant les réglages de la station via Bluetooth, puis 10 secondes après chaque changement d'une sortie ou du mode veille, et écrit les différences dans le journal de l'app. Homey doit être à portée Bluetooth et l'application BLUETTI ne doit pas être connectée en Bluetooth. Rien n'est écrit sur la station. Désactivez l'option une fois terminé.",
-          "es": "Solo cuando lo pida el desarrollador. Lee ahora los ajustes de la estación por Bluetooth, y de nuevo 10 segundos después de cada cambio de una salida o del modo reposo, y escribe las diferencias en el registro de la app. Homey debe estar al alcance del Bluetooth y la app de BLUETTI no debe estar conectada por Bluetooth. No se escribe nada en la estación. Desactívalo cuando termines.",
-          "it": "Solo quando lo chiede lo sviluppatore. Legge subito le impostazioni della power station via Bluetooth, e di nuovo 10 secondi dopo ogni modifica di un'uscita o della modalità sospensione, e scrive le differenze nel log dell'app. Homey deve essere nel raggio del Bluetooth e l'app BLUETTI non deve essere collegata via Bluetooth. Non viene scritto nulla sulla power station. Disattivalo quando hai finito."
+          "en": "Only when the developer asks for it. Reads the power station's settings over Bluetooth now, and again 10 seconds after each output or sleep mode change, and writes what changed to the app log. Homey must be within Bluetooth range and the BLUETTI app must not be connected over Bluetooth. Nothing is written to the power station. It turns itself off after 1 hour.",
+          "nl": "Alleen als de ontwikkelaar erom vraagt. Leest de instellingen van de powerstation nu via Bluetooth uit, en opnieuw 10 seconden na elke wijziging van een uitgang of de slaapstand, en schrijft de verschillen naar het app-logboek. Homey moet binnen Bluetooth-bereik zijn en de BLUETTI-app mag niet via Bluetooth verbonden zijn. Er wordt niets naar de powerstation geschreven. Het schakelt zichzelf na 1 uur uit.",
+          "de": "Nur auf Anfrage des Entwicklers. Liest die Einstellungen der Powerstation jetzt per Bluetooth und erneut 10 Sekunden nach jeder Änderung eines Ausgangs oder des Schlafmodus, und schreibt die Unterschiede ins App-Protokoll. Homey muss in Bluetooth-Reichweite sein und die BLUETTI-App darf nicht per Bluetooth verbunden sein. Es wird nichts auf die Powerstation geschrieben. Er schaltet sich nach 1 Stunde selbst aus.",
+          "fr": "Uniquement à la demande du développeur. Lit maintenant les réglages de la station via Bluetooth, puis 10 secondes après chaque changement d'une sortie ou du mode veille, et écrit les différences dans le journal de l'app. Homey doit être à portée Bluetooth et l'application BLUETTI ne doit pas être connectée en Bluetooth. Rien n'est écrit sur la station. L'option se désactive d'elle-même après 1 heure.",
+          "es": "Solo cuando lo pida el desarrollador. Lee ahora los ajustes de la estación por Bluetooth, y de nuevo 10 segundos después de cada cambio de una salida o del modo reposo, y escribe las diferencias en el registro de la app. Homey debe estar al alcance del Bluetooth y la app de BLUETTI no debe estar conectada por Bluetooth. No se escribe nada en la estación. Se desactiva solo al cabo de 1 hora.",
+          "it": "Solo quando lo chiede lo sviluppatore. Legge subito le impostazioni della power station via Bluetooth, e di nuovo 10 secondi dopo ogni modifica di un'uscita o della modalità sospensione, e scrive le differenze nel log dell'app. Homey deve essere nel raggio del Bluetooth e l'app BLUETTI non deve essere collegata via Bluetooth. Non viene scritto nulla sulla power station. Si disattiva da solo dopo 1 ora."
         }
       }
     ]

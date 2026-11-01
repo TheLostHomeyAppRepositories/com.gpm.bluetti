@@ -6,7 +6,9 @@
     "not_supported": "Cette station d'énergie ne prend pas en charge le __output__.",
     "ble_command": "La station d'énergie est hors ligne dans le cloud BLUETTI et n'a pas pu être jointe en Bluetooth : __message__",
     "ble_refused": "La station d'énergie n'a pas exécuté la commande.",
-    "cloud_only": "Le cloud BLUETTI ne répond pas, et le __output__ ne peut être commandé que via le cloud : __message__"
+    "cloud_only": "Le cloud BLUETTI ne répond pas, et le __output__ ne peut être commandé que via le cloud : __message__",
+    "ac_locked": "La sortie AC reste allumée (« Garder la sortie AC allumée » dans les réglages de l'appareil).",
+    "ac_eco_locked": "L'AC ECO peut couper la sortie AC, et la sortie AC reste allumée (« Garder la sortie AC allumée » dans les réglages de l'appareil)."
   },
   "outputs": {
     "sleep": "mode veille"

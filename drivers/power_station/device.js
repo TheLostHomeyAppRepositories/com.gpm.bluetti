@@ -68,6 +68,8 @@ const BLE_BACKOFF_MS = 3 * 60000;
 const BLE_SCAN_START = 2000;
 const BLE_SCAN_COUNT = 300;
 const BLE_SCAN_DELAY_MS = 10000;
+// The scan keeps Bluetooth busy after every switch, so it turns itself off.
+const BLE_SCAN_AUTO_OFF_MS = 60 * 60000;
 // Wait after the cloud reports the unit back online before trusting its values.
 const RECONNECT_SETTLE_MS = 10000;
 // Coalesce bursts of real-time notifications into one read.
@@ -120,6 +122,7 @@ class PowerStationDevice extends Homey.Device {
       }
     }
 
+    if (this.getSetting('ble_scan')) this._startBleScanAutoOff();
     this.restartPolling();
     // Deferred so getDevices() already includes this device.
     this.homey.setTimeout(() => this.homey.app.updateRealtime(), 1000);
@@ -464,6 +467,18 @@ class PowerStationDevice extends Homey.Device {
     }, BLE_SCAN_DELAY_MS);
   }
 
+  _startBleScanAutoOff() {
+    if (this._bleScanOffTimer) this.homey.clearTimeout(this._bleScanOffTimer);
+    this._bleScanOffTimer = this.homey.setTimeout(async () => {
+      this._bleScanOffTimer = null;
+      if (this._bleScanTimer) this.homey.clearTimeout(this._bleScanTimer);
+      this._bleScanTimer = null;
+      // setSettings does not call onSettings, so this is the whole switch-off.
+      await this.setSettings({ ble_scan: false }).catch(this.error);
+      this.log('Bluetooth register scan turned off after 1 hour');
+    }, BLE_SCAN_AUTO_OFF_MS);
+  }
+
   async _bleScan(reason) {
     const end = BLE_SCAN_START + BLE_SCAN_COUNT - 1;
     try {
@@ -606,6 +621,11 @@ class PowerStationDevice extends Homey.Device {
   async setOutput(output, on) {
     const fnCode = SWITCH_MAP[output];
     if (!fnCode) throw new Error(`Unknown output ${output}`);
+    // The AC output may power the router or Homey itself: switching it off would cut Homey off.
+    if (this.getSetting('ac_keep_on')) {
+      if (output === 'ac' && !on) throw new Error(this.homey.__('errors.ac_locked'));
+      if (output === 'ac_eco' && on) throw new Error(this.homey.__('errors.ac_eco_locked'));
+    }
     // The cloud accepts commands for an offline unit and drops them: go over Bluetooth instead.
     // A switch Bluetooth cannot set (sleep mode) still goes to the cloud when only the cloud's
     // data requests fail: the unit itself is online and the command endpoint may still answer.
@@ -708,9 +728,15 @@ class PowerStationDevice extends Homey.Device {
         this._syncBackupCapabilities().then(() => this.restartPolling(500)).catch(this.error);
       }, 500);
     }
-    if (changedKeys.includes('ble_scan') && newSettings.ble_scan) {
-      this._bleScanValues = null;
-      this.homey.setTimeout(() => this._bleScan('start'), 500);
+    if (changedKeys.includes('ble_scan')) {
+      if (newSettings.ble_scan) {
+        this._bleScanValues = null;
+        this._startBleScanAutoOff();
+        this.homey.setTimeout(() => this._bleScan('start'), 500);
+      } else if (this._bleScanOffTimer) {
+        this.homey.clearTimeout(this._bleScanOffTimer);
+        this._bleScanOffTimer = null;
+      }
     }
     if (changedKeys.includes('ble_fallback')) {
       if (newSettings.ble_fallback) {
@@ -735,9 +761,11 @@ class PowerStationDevice extends Homey.Device {
     if (this._pollTimer) this.homey.clearTimeout(this._pollTimer);
     if (this._notifyTimer) this.homey.clearTimeout(this._notifyTimer);
     if (this._bleScanTimer) this.homey.clearTimeout(this._bleScanTimer);
+    if (this._bleScanOffTimer) this.homey.clearTimeout(this._bleScanOffTimer);
     this._pollTimer = null;
     this._notifyTimer = null;
     this._bleScanTimer = null;
+    this._bleScanOffTimer = null;
   }
 
   async onDeleted() {
