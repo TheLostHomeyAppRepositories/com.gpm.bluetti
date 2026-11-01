@@ -70,6 +70,8 @@ const BLE_SCAN_COUNT = 300;
 const BLE_SCAN_DELAY_MS = 10000;
 // The scan keeps Bluetooth busy after every switch, so it turns itself off.
 const BLE_SCAN_AUTO_OFF_MS = 60 * 60000;
+// Output held on by the "Keep AC output on" setting (with its ECO mode held off).
+const KEEP_ON_OUTPUT = 'ac';
 // Wait after the cloud reports the unit back online before trusting its values.
 const RECONNECT_SETTLE_MS = 10000;
 // Coalesce bursts of real-time notifications into one read.
@@ -623,8 +625,8 @@ class PowerStationDevice extends Homey.Device {
     if (!fnCode) throw new Error(`Unknown output ${output}`);
     // The AC output may power the router or Homey itself: switching it off would cut Homey off.
     if (this.getSetting('ac_keep_on')) {
-      if (output === 'ac' && !on) throw new Error(this.homey.__('errors.ac_locked'));
-      if (output === 'ac_eco' && on) throw new Error(this.homey.__('errors.ac_eco_locked'));
+      if (output === KEEP_ON_OUTPUT && !on) throw new Error(this.homey.__('errors.ac_locked'));
+      if (output === `${KEEP_ON_OUTPUT}_eco` && on) throw new Error(this.homey.__('errors.ac_eco_locked'));
     }
     // The cloud accepts commands for an offline unit and drops them: go over Bluetooth instead.
     // A switch Bluetooth cannot set (sleep mode) still goes to the cloud when only the cloud's
