@@ -95,6 +95,14 @@ class BluettiApp extends Homey.App {
     else this.log(`Real-time notification for a power station not added to Homey (${maskSn(sn)})`);
   }
 
+  // A device saw its values change without notifications; at most once per 15 min.
+  restartSilentRealtime() {
+    if (!this.realtime.running || Date.now() - (this._lastSilentRestart || 0) < 15 * 60000) return;
+    this._lastSilentRestart = Date.now();
+    this.log('Real-time link connected but silent (values changed without notifications), reconnecting');
+    this.realtime.restart();
+  }
+
   async _onRealtimeAuthError(code) {
     // At most one refresh per 10 min, so a rejection that is not about the token
     // (e.g. code 600 "upgrade required") just backs off instead of looping.

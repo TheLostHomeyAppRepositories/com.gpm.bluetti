@@ -78,6 +78,8 @@ const RECONNECT_SETTLE_MS = 10000;
 const NOTIFY_DEBOUNCE_MS = 1500;
 // Safety-net polling while the real-time link is connected.
 const REALTIME_POLL_SEC = 300;
+// Gaps of 5–6 min between notifications are normal while the readings keep changing a little.
+const REALTIME_SILENCE_MS = 15 * 60000;
 // Interval of the diagnostic summary line in the log.
 const SUMMARY_INTERVAL_MS = 60 * 60000;
 
@@ -256,6 +258,7 @@ class PowerStationDevice extends Homey.Device {
         this.log(`Cloud data: model=${product.model} online=${product.online} bound=${product.isBindByCurUser}`
           + ` states: ${formatStates(product.stateList)}`);
       }
+      this._checkRealtimeSilence(product);
       await this._applyProduct(product);
     } catch (err) {
       this._noteError(err);
@@ -281,6 +284,28 @@ class PowerStationDevice extends Homey.Device {
         this._pollAgain = false;
         this.restartPolling();
       }
+    }
+  }
+
+  // The real-time link can stay connected (the server answers pings) while it no longer pushes
+  // notifications. Values that keep changing between reads without any notification for
+  // REALTIME_SILENCE_MS mean the link is silent: reconnect it. A change Homey commanded itself
+  // is expected without a notification, so it does not count.
+  _checkRealtimeSilence(product) {
+    const signature = formatStates(product.stateList);
+    const changed = this._lastSignature !== undefined && signature !== this._lastSignature;
+    const notified = this._notifyTotal !== this._notifyTotalAtPoll || this._commandedSincePoll;
+    this._lastSignature = signature;
+    this._notifyTotalAtPoll = this._notifyTotal;
+    this._commandedSincePoll = false;
+    if (!this.homey.app.realtime.connected || !changed || notified) {
+      this._silentSince = null;
+      return;
+    }
+    if (!this._silentSince) this._silentSince = Date.now();
+    if (Date.now() - this._silentSince >= REALTIME_SILENCE_MS) {
+      this._silentSince = null;
+      this.homey.app.restartSilentRealtime();
     }
   }
 
@@ -439,6 +464,7 @@ class PowerStationDevice extends Homey.Device {
   // The cloud pushed "this device changed": re-read soon, coalescing bursts.
   onCloudNotification() {
     this._stats.notifies += 1;
+    this._notifyTotal = (this._notifyTotal || 0) + 1;
     if (this.detailedLog) this.log('Real-time notification from cloud');
     const notifiedAt = Date.now();
     if (this._notifyTimer) return;
@@ -665,6 +691,7 @@ class PowerStationDevice extends Homey.Device {
       throw new Error(this.homey.__('errors.cloud', { message: err.message }));
     }
 
+    this._commandedSincePoll = true;
     if (this.hasCapability(`onoff.${output}`)) await this._setOutputState(output, on, 'Homey');
     this.restartPolling(POST_COMMAND_POLL_MS);
   }
