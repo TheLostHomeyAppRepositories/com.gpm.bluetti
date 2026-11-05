@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.gpm.bluetti",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -742,7 +742,8 @@
         "onoff.ac_eco",
         "onoff.dc_eco",
         "bluetti_work_mode",
-        "bluetti_connection"
+        "bluetti_connection",
+        "bluetti_connection_level"
       ],
       "capabilitiesOptions": {
         "measure_power": {
@@ -1276,6 +1277,23 @@
           }
         }
       ]
+    },
+    "bluetti_connection_level": {
+      "type": "number",
+      "title": {
+        "en": "Connection (2 cloud, 1 Bluetooth, 0 offline)",
+        "nl": "Verbinding (2 cloud, 1 Bluetooth, 0 offline)",
+        "de": "Verbindung (2 Cloud, 1 Bluetooth, 0 offline)",
+        "fr": "Connexion (2 cloud, 1 Bluetooth, 0 hors ligne)",
+        "es": "Conexión (2 nube, 1 Bluetooth, 0 sin conexión)",
+        "it": "Connessione (2 cloud, 1 Bluetooth, 0 offline)"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": null,
+      "icon": "/assets/capabilities/connection.svg"
     },
     "bluetti_discharge_time": {
       "type": "number",

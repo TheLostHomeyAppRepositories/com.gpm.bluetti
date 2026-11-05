@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Connection (2 cloud, 1 Bluetooth, 0 offline)",
+    "nl": "Verbinding (2 cloud, 1 Bluetooth, 0 offline)",
+    "de": "Verbindung (2 Cloud, 1 Bluetooth, 0 offline)",
+    "fr": "Connexion (2 cloud, 1 Bluetooth, 0 hors ligne)",
+    "es": "Conexión (2 nube, 1 Bluetooth, 0 sin conexión)",
+    "it": "Connessione (2 cloud, 1 Bluetooth, 0 offline)"
+  },
+  "decimals": 0,
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": null,
+  "icon": "/assets/capabilities/connection.svg"
+}

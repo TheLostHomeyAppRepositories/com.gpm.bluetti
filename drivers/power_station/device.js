@@ -80,6 +80,8 @@ const NOTIFY_DEBOUNCE_MS = 1500;
 const REALTIME_POLL_SEC = 300;
 // Gaps of 5–6 min between notifications are normal while the readings keep changing a little.
 const REALTIME_SILENCE_MS = 15 * 60000;
+// The Connection sensor as a number, because Insights only charts numbers and on/off values.
+const CONNECTION_LEVELS = { cloud: 2, bluetooth: 1, offline: 0 };
 // Interval of the diagnostic summary line in the log.
 const SUMMARY_INTERVAL_MS = 60 * 60000;
 
@@ -98,7 +100,8 @@ class PowerStationDevice extends Homey.Device {
     await this.unsetWarning().catch(this.error);
 
     // Capabilities added after the first release.
-    for (const capability of ['bluetti_soc', 'bluetti_time_to_empty', 'bluetti_time_to_full', 'bluetti_connection']) {
+    for (const capability of ['bluetti_soc', 'bluetti_time_to_empty', 'bluetti_time_to_full', 'bluetti_connection',
+      'bluetti_connection_level']) {
       if (!this.hasCapability(capability)) await this.addCapability(capability).catch(this.error);
     }
     // Pre-fill the capacity for known models; 0 means unknown.
@@ -445,6 +448,7 @@ class PowerStationDevice extends Homey.Device {
   async _setConnection(connection) {
     const previous = this.getCapabilityValue('bluetti_connection');
     await this._set('bluetti_connection', connection);
+    await this._set('bluetti_connection_level', CONNECTION_LEVELS[connection]);
     if (previous && previous !== connection) {
       this.log(`Connection ${previous} → ${connection}`);
       this.homey.app.connectionChangedTrigger.trigger(this, {}, { connection }).catch(this.error);
