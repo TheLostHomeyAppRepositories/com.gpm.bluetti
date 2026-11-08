@@ -71,5 +71,13 @@
     "fr": "Insights affiche désormais l'historique de la connexion : 2 pour le cloud BLUETTI, 1 pour Bluetooth et 0 pour hors ligne.",
     "es": "Insights ahora muestra el historial de la conexión: 2 para la nube de BLUETTI, 1 para Bluetooth y 0 para sin conexión.",
     "it": "Insights ora mostra la cronologia della connessione: 2 per il cloud BLUETTI, 1 per il Bluetooth e 0 per offline."
+  },
+  "0.5.2": {
+    "en": "With two or more power stations on one BLUETTI account, one of them no longer drops offline for a moment with a \"session expired\" message when the sign-in is renewed.",
+    "nl": "Met twee of meer powerstations op één BLUETTI-account valt er niet langer even één offline met de melding \"sessie verlopen\" wanneer de aanmelding wordt vernieuwd.",
+    "de": "Bei zwei oder mehr Powerstations in einem BLUETTI-Konto geht keine mehr kurz offline mit der Meldung \"Sitzung abgelaufen\", wenn die Anmeldung erneuert wird.",
+    "fr": "Avec deux stations ou plus sur un même compte BLUETTI, l'une d'elles ne passe plus brièvement hors ligne avec le message « session expirée » quand la connexion est renouvelée.",
+    "es": "Con dos o más estaciones en la misma cuenta de BLUETTI, ya no aparece una de ellas desconectada un momento con el mensaje \"sesión caducada\" cuando se renueva el inicio de sesión.",
+    "it": "Con due o più power station sullo stesso account BLUETTI, nessuna va più offline per un attimo con il messaggio \"sessione scaduta\" quando l'accesso viene rinnovato."
   }
 }

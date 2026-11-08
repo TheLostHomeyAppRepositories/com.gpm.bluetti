@@ -80,3 +80,29 @@ test('a command stays within Homey\'s 10 s limit', async () => {
   await makeCloud(null).control('1', 'SetCtrlDc', 1);
   assert.ok(seenTimeouts[0] <= 8000, `timeout ${seenTimeouts[0]}`);
 });
+
+test('a request that expired while another one refreshed the token retries with the new token', async () => {
+  const cloud = makeCloud(null);
+  let valid = 'fresh';
+  let refreshes = 0;
+  cloud._tokenRequest = async () => {
+    refreshes += 1;
+    valid = `t${refreshes}`; // a new token invalidates the previous one
+    return { access_token: valid, refresh_token: 'r', expires_in: 3600 };
+  };
+  cloud.getToken().refresh_token = 'r';
+  let releaseSecond;
+  const secondHeld = new Promise((resolve) => { releaseSecond = resolve; });
+  let calls = 0;
+  cloud._send = async (method, pathAndQuery, headers) => {
+    calls += 1;
+    if (calls === 2) await secondHeld; // the second device's answer arrives after the first refreshed
+    return headers.Authorization === valid ? { ...OK, ok: true } : { status: 200, ok: true, json: { msgCode: 803 } };
+  };
+  const first = cloud.getDeviceStates(['1']);
+  const second = cloud.getDeviceStates(['2']);
+  await first;
+  releaseSecond();
+  await second;
+  assert.strictEqual(refreshes, 1);
+});
